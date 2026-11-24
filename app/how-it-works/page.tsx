@@ -80,7 +80,7 @@ export default function HowItWorksPage() {
             </p>
             <h1
               id="hiw-hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl leading-tight mb-8"
+              className="font-heading font-bold text-4xl md:text-6xl leading-tight md:leading-none mb-8"
             >
               Three Ways to Deploy CommonLife
             </h1>
@@ -120,7 +120,7 @@ export default function HowItWorksPage() {
                     <ul className="space-y-2">
                       {pillar.benefits.map((b) => (
                         <li key={b} className="flex items-center gap-3 text-sm text-brand-navy/80">
-                          <span className="w-5 h-5 rounded-full bg-brand-berry/20 flex items-center justify-center text-brand-berry text-xs flex-shrink-0" aria-hidden="true">
+                          <span className="w-5 h-5 rounded-full bg-brand-berry/20 flex items-center justify-center text-brand-berry text-xs shrink-0" aria-hidden="true">
                             ✓
                           </span>
                           {b}

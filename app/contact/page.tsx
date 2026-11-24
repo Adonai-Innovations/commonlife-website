@@ -89,7 +89,7 @@ export default function ContactPage() {
             </p>
             <h1
               id="contact-hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl leading-tight mb-6"
+              className="font-heading font-bold text-4xl md:text-6xl leading-tight md:leading-none mb-6"
             >
               Let&rsquo;s Talk
             </h1>
@@ -169,7 +169,8 @@ export default function ContactPage() {
                       onChange={(e) => setHoneypot(e.target.value)}
                     />
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* Tailwind 4 space-y ignores this absolute honeypot, so keep the previous 1.5rem gap. */}
+                  <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label
                         htmlFor="firstName"
@@ -186,7 +187,7 @@ export default function ContactPage() {
                         autoComplete="given-name"
                         value={form.firstName}
                         onChange={handleChange}
-                        className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:ring-2 focus:ring-brand-berry focus:border-transparent"
+                        className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-hidden focus:ring-2 focus:ring-brand-berry focus:border-transparent"
                         placeholder="John"
                       />
                     </div>
@@ -206,7 +207,7 @@ export default function ContactPage() {
                         autoComplete="family-name"
                         value={form.lastName}
                         onChange={handleChange}
-                        className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:ring-2 focus:ring-brand-berry focus:border-transparent"
+                        className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-hidden focus:ring-2 focus:ring-brand-berry focus:border-transparent"
                         placeholder="Smith"
                       />
                     </div>
@@ -228,7 +229,7 @@ export default function ContactPage() {
                       autoComplete="email"
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:ring-2 focus:ring-brand-berry focus:border-transparent"
+                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-hidden focus:ring-2 focus:ring-brand-berry focus:border-transparent"
                       placeholder="pastor@yourchurch.org"
                     />
                   </div>
@@ -249,7 +250,7 @@ export default function ContactPage() {
                       autoComplete="organization"
                       value={form.organization}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:ring-2 focus:ring-brand-berry focus:border-transparent"
+                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-hidden focus:ring-2 focus:ring-brand-berry focus:border-transparent"
                       placeholder="First Baptist Church"
                     />
                   </div>
@@ -269,7 +270,7 @@ export default function ContactPage() {
                       autoComplete="organization-title"
                       value={form.role}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:ring-2 focus:ring-brand-berry focus:border-transparent"
+                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-hidden focus:ring-2 focus:ring-brand-berry focus:border-transparent"
                       placeholder="Lead Pastor, Tech Director, etc."
                     />
                   </div>
@@ -289,7 +290,7 @@ export default function ContactPage() {
                       rows={5}
                       value={form.message}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-none focus:ring-2 focus:ring-brand-berry focus:border-transparent resize-none"
+                      className="w-full rounded-lg border border-brand-offWhite px-4 py-3 text-sm text-brand-navy placeholder-brand-navy/40 focus:outline-hidden focus:ring-2 focus:ring-brand-berry focus:border-transparent resize-none"
                       placeholder="Tell us about your church and what you're looking for..."
                     />
                   </div>
@@ -304,7 +305,7 @@ export default function ContactPage() {
                     type="submit"
                     disabled={submitting}
                     aria-busy={submitting}
-                    className="w-full inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-brand-navy focus-visible:outline-offset-2 disabled:opacity-60"
+                    className="w-full inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-brand-navy focus-visible:outline-offset-2 disabled:opacity-60"
                   >
                     {submitting ? "Sending..." : "Send Message"}
                   </button>
@@ -338,7 +339,7 @@ export default function ContactPage() {
                   ].map((item) => (
                     <li key={item.step} className="flex gap-4">
                       <div
-                        className="flex-shrink-0 w-7 h-7 rounded-full bg-brand-berry text-white flex items-center justify-center text-xs font-heading font-bold"
+                        className="shrink-0 w-7 h-7 rounded-full bg-brand-berry text-white flex items-center justify-center text-xs font-heading font-bold"
                         aria-hidden="true"
                       >
                         {item.step}

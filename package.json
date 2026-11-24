@@ -6,24 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./lib/register-test-resolver.mjs --experimental-strip-types --test lib/*.test.ts"
   },
   "dependencies": {
-    "next": "15.5.29",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "4.3.5",
     "@types/node": "^26",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "15.5.29",
+    "@types/react": "19.3.1",
+    "@types/react-dom": "19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.4.6",
     "postcss": "8.5.33",
     "tailwindcss": "^4.3.5",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   },
   "overrides": {
     "postcss": "8.5.33",

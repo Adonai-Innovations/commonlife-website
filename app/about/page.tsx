@@ -78,7 +78,7 @@ export default function AboutPage() {
             </p>
             <h1
               id="about-hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl leading-tight mb-8"
+              className="font-heading font-bold text-4xl md:text-6xl leading-tight md:leading-none mb-8"
             >
               Faith-First AI for the Church
             </h1>
@@ -208,7 +208,7 @@ export default function AboutPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
             >
               Schedule a Demo
             </Link>

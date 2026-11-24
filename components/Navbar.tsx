@@ -39,7 +39,7 @@ export default function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center px-6 py-2.5 rounded bg-brand-berry text-white text-sm font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+          className="hidden md:inline-flex items-center px-6 py-2.5 rounded bg-brand-berry text-white text-sm font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
         >
           Schedule a Demo
         </Link>
