@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { CONTACT_ERRORS, CONTACT_LIMITS } from "@/lib/contact-fields";
 
 const inquiryTypes = [
   { id: "demo", label: "Schedule a Demo" },
@@ -13,9 +14,20 @@ const inquiryTypes = [
   { id: "other", label: "Other" },
 ];
 
+const KNOWN_ERRORS = new Set<string>(Object.values(CONTACT_ERRORS));
+
+function messageFromResponse(data: unknown): string {
+  if (!data || typeof data !== "object" || !("error" in data)) return CONTACT_ERRORS.delivery;
+  const error = (data as { error?: unknown }).error;
+  return typeof error === "string" && KNOWN_ERRORS.has(error) ? error : CONTACT_ERRORS.delivery;
+}
+
 export default function ContactPage() {
   const [selectedInquiry, setSelectedInquiry] = useState("demo");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -25,15 +37,40 @@ export default function ContactPage() {
     message: "",
   });
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json", accept: "application/json" },
+        body: JSON.stringify({
+          inquiry: selectedInquiry,
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          organization: form.organization,
+          role: form.role,
+          message: form.message,
+          cl_hp: honeypot,
+        }),
+      });
+      const data: unknown = await response.json().catch(() => null);
+      if (!response.ok) {
+        setError(messageFromResponse(data));
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError(CONTACT_ERRORS.delivery);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -119,11 +156,19 @@ export default function ContactPage() {
                   </p>
                 </div>
               ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="bg-white rounded-xl p-8 space-y-6"
-                  noValidate
-                >
+                <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 space-y-6 relative">
+                  <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+                    <label htmlFor="cl_hp">Leave this field empty</label>
+                    <input
+                      id="cl_hp"
+                      name="cl_hp"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label
@@ -137,6 +182,7 @@ export default function ContactPage() {
                         name="firstName"
                         type="text"
                         required
+                        maxLength={CONTACT_LIMITS.firstName}
                         autoComplete="given-name"
                         value={form.firstName}
                         onChange={handleChange}
@@ -156,6 +202,7 @@ export default function ContactPage() {
                         name="lastName"
                         type="text"
                         required
+                        maxLength={CONTACT_LIMITS.lastName}
                         autoComplete="family-name"
                         value={form.lastName}
                         onChange={handleChange}
@@ -177,6 +224,7 @@ export default function ContactPage() {
                       name="email"
                       type="email"
                       required
+                      maxLength={CONTACT_LIMITS.email}
                       autoComplete="email"
                       value={form.email}
                       onChange={handleChange}
@@ -197,6 +245,7 @@ export default function ContactPage() {
                       name="organization"
                       type="text"
                       required
+                      maxLength={CONTACT_LIMITS.organization}
                       autoComplete="organization"
                       value={form.organization}
                       onChange={handleChange}
@@ -216,6 +265,7 @@ export default function ContactPage() {
                       id="role"
                       name="role"
                       type="text"
+                      maxLength={CONTACT_LIMITS.role}
                       autoComplete="organization-title"
                       value={form.role}
                       onChange={handleChange}
@@ -235,6 +285,7 @@ export default function ContactPage() {
                       id="message"
                       name="message"
                       required
+                      maxLength={CONTACT_LIMITS.message}
                       rows={5}
                       value={form.message}
                       onChange={handleChange}
@@ -243,11 +294,19 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-brand-berry" role="alert">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-brand-navy focus-visible:outline-offset-2"
+                    disabled={submitting}
+                    aria-busy={submitting}
+                    className="w-full inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-brand-navy focus-visible:outline-offset-2 disabled:opacity-60"
                   >
-                    Send Message
+                    {submitting ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               )}
