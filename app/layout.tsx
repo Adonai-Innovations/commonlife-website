@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Cabin, Inter } from "next/font/google";
+import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 
-const cabin = Cabin({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-cabin",
-  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-lora",
 });
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
 });
 
@@ -33,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cabin.variable} ${inter.variable} font-body antialiased`}>
+      <body className={`${lora.variable} ${inter.variable} font-body antialiased`}>
         {children}
       </body>
     </html>
