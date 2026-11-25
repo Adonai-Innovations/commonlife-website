@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteShell from "@/components/SiteShell";
+import { SCHEDULE_DEMO_URL } from "@/lib/links";
 import Link from "next/link";
 
 const tiers = [
@@ -86,26 +86,25 @@ export const metadata = {
 
 export default function PricingPage() {
   return (
-    <>
-      <Navbar />
-
-      <main>
+    <SiteShell padded={false}>
+      
+      
         {/* Hero */}
         <section
-          className="bg-brand-navy text-white px-5 md:px-20 pt-24 pb-20 text-center"
+          className="bg-cl-deep-ocean text-cl-white px-5 md:px-20 pt-24 pb-20 text-center"
           aria-labelledby="pricing-hero-heading"
         >
           <div className="max-w-2xl mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase mb-4">
+            <p className="text-cl-blue text-xs font-lora font-semibold tracking-widest uppercase mb-4">
               Pricing
             </p>
             <h1
               id="pricing-hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl leading-tight md:leading-none mb-6"
+              className="font-lora font-semibold text-4xl md:text-6xl leading-tight md:leading-none mb-6"
             >
               Simple, Faithful Pricing
             </h1>
-            <p className="text-brand-lightBerry text-lg md:text-xl">
+            <p className="text-cl-sky text-lg md:text-xl">
               No hidden fees. Cancel anytime. Start with a 30-day free pilot and only pay when
               you&rsquo;re ready.
             </p>
@@ -114,7 +113,7 @@ export default function PricingPage() {
 
         {/* Pricing tiers */}
         <section
-          className="bg-brand-offWhite px-5 md:px-20 py-20 md:py-28"
+          className="bg-cl-paper px-5 md:px-20 py-20 md:py-28"
           aria-labelledby="tiers-heading"
         >
           <div className="max-w-[1440px] mx-auto">
@@ -127,27 +126,27 @@ export default function PricingPage() {
                   key={tier.name}
                   className={`rounded-2xl p-8 flex flex-col ${
                     tier.highlighted
-                      ? "bg-brand-navy text-white ring-2 ring-brand-berry"
-                      : "bg-white text-brand-navy"
+                      ? "bg-cl-deep-ocean text-cl-white ring-2 ring-cl-blue"
+                      : "bg-cl-white text-cl-deep-ocean"
                   }`}
                 >
                   <div className="mb-6">
                     {tier.highlighted && (
-                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-berry text-white text-xs font-heading font-semibold mb-4">
+                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-cl-blue text-cl-white text-xs font-lora font-semibold mb-4">
                         Most Popular
                       </div>
                     )}
                     <h3
-                      className={`font-heading font-bold text-xl mb-2 ${
-                        tier.highlighted ? "text-white" : "text-brand-navy"
+                      className={`font-lora font-semibold text-xl mb-2 ${
+                        tier.highlighted ? "text-cl-white" : "text-cl-deep-ocean"
                       }`}
                     >
                       {tier.name}
                     </h3>
                     <div className="flex items-baseline gap-1 mb-3">
                       <span
-                        className={`font-heading font-bold text-5xl ${
-                          tier.highlighted ? "text-white" : "text-brand-navy"
+                        className={`font-lora font-semibold text-5xl ${
+                          tier.highlighted ? "text-cl-white" : "text-cl-deep-ocean"
                         }`}
                       >
                         {tier.price}
@@ -155,7 +154,7 @@ export default function PricingPage() {
                       {tier.period && (
                         <span
                           className={`text-sm ${
-                            tier.highlighted ? "text-brand-lightBerry" : "text-brand-navy/60"
+                            tier.highlighted ? "text-cl-sky" : "text-cl-deep-ocean/60"
                           }`}
                         >
                           {tier.period}
@@ -164,7 +163,7 @@ export default function PricingPage() {
                     </div>
                     <p
                       className={`text-sm leading-relaxed ${
-                        tier.highlighted ? "text-brand-lightBerry" : "text-brand-navy/70"
+                        tier.highlighted ? "text-cl-sky" : "text-cl-deep-ocean/70"
                       }`}
                     >
                       {tier.description}
@@ -176,14 +175,14 @@ export default function PricingPage() {
                       <li
                         key={f}
                         className={`flex items-start gap-3 text-sm ${
-                          tier.highlighted ? "text-brand-lightBerry" : "text-brand-navy/80"
+                          tier.highlighted ? "text-cl-sky" : "text-cl-deep-ocean/80"
                         }`}
                       >
                         <span
                           className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs mt-0.5 ${
                             tier.highlighted
-                              ? "bg-brand-berry/30 text-white"
-                              : "bg-brand-berry/20 text-brand-berry"
+                              ? "bg-cl-blue/30 text-cl-white"
+                              : "bg-cl-blue/20 text-cl-blue"
                           }`}
                           aria-hidden="true"
                         >
@@ -195,11 +194,13 @@ export default function PricingPage() {
                   </ul>
 
                   <Link
-                    href="/contact"
-                    className={`inline-flex justify-center items-center px-6 py-3.5 rounded font-heading font-semibold text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                    href={tier.cta === "Schedule a Demo" ? SCHEDULE_DEMO_URL : "/contact"}
+                    target={tier.cta === "Schedule a Demo" ? "_blank" : undefined}
+                    rel={tier.cta === "Schedule a Demo" ? "noopener noreferrer" : undefined}
+                    className={`inline-flex justify-center items-center px-6 py-3.5 rounded font-lora font-semibold text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${
                       tier.highlighted
-                        ? "bg-brand-berry text-white hover:bg-brand-berry/90 focus-visible:outline-white"
-                        : "bg-brand-navy text-white hover:bg-brand-navyDark focus-visible:outline-brand-navy"
+                        ? "bg-cl-blue text-cl-white hover:bg-cl-blue/90 focus-visible:outline-cl-white"
+                        : "bg-cl-deep-ocean text-cl-white hover:bg-cl-ocean-card focus-visible:outline-cl-deep-ocean"
                     }`}
                   >
                     {tier.cta}
@@ -208,7 +209,7 @@ export default function PricingPage() {
               ))}
             </div>
 
-            <p className="text-center text-brand-navy/50 text-xs mt-8">
+            <p className="text-center text-cl-deep-ocean/50 text-xs mt-8">
               * Pricing shown is indicative. Contact us for confirmed quotes and nonprofit discounts.
             </p>
           </div>
@@ -216,27 +217,27 @@ export default function PricingPage() {
 
         {/* FAQ */}
         <section
-          className="bg-white px-5 md:px-20 py-20 md:py-28"
+          className="bg-cl-white px-5 md:px-20 py-20 md:py-28"
           aria-labelledby="pricing-faq-heading"
         >
           <div className="max-w-3xl mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
+            <p className="text-cl-blue text-xs font-lora font-semibold tracking-widest uppercase text-center mb-4">
               FAQ
             </p>
             <h2
               id="pricing-faq-heading"
-              className="font-heading font-bold text-3xl md:text-4xl text-brand-navy text-center mb-16"
+              className="font-lora font-semibold text-3xl md:text-4xl text-cl-deep-ocean text-center mb-16"
             >
               Pricing Questions
             </h2>
 
             <dl className="space-y-6">
               {faqs.map((faq) => (
-                <div key={faq.q} className="border border-brand-offWhite rounded-xl p-7">
-                  <dt className="font-heading font-bold text-base text-brand-navy mb-3">
+                <div key={faq.q} className="border border-cl-paper rounded-xl p-7">
+                  <dt className="font-lora font-semibold text-base text-cl-deep-ocean mb-3">
                     {faq.q}
                   </dt>
-                  <dd className="text-brand-navy/70 text-sm leading-relaxed">{faq.a}</dd>
+                  <dd className="text-cl-deep-ocean/70 text-sm leading-relaxed">{faq.a}</dd>
                 </div>
               ))}
             </dl>
@@ -245,30 +246,30 @@ export default function PricingPage() {
 
         {/* CTA */}
         <section
-          className="bg-brand-navy text-white px-5 md:px-20 py-24 text-center"
+          className="bg-cl-deep-ocean text-cl-white px-5 md:px-20 py-24 text-center"
           aria-labelledby="pricing-cta-heading"
         >
           <div className="max-w-xl mx-auto">
             <h2
               id="pricing-cta-heading"
-              className="font-heading font-bold text-3xl md:text-4xl mb-6"
+              className="font-lora font-semibold text-3xl md:text-4xl mb-6"
             >
               Ready to Get Started?
             </h2>
-            <p className="text-brand-lightBerry text-lg mb-10">
+            <p className="text-cl-sky text-lg mb-10">
               Schedule a 30-minute demo and we&rsquo;ll set up your free pilot on the same call.
             </p>
             <Link
-              href="/contact"
-              className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              href={SCHEDULE_DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex justify-center items-center px-8 py-4 rounded-full bg-cl-blue text-cl-white font-lora font-semibold hover:bg-cl-blue/90 transition-colors focus-visible:outline-2 focus-visible:outline-cl-white focus-visible:outline-offset-2"
             >
               Schedule a Demo
             </Link>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </>
+      
+    </SiteShell>
   );
 }

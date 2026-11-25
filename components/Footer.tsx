@@ -1,53 +1,51 @@
 import Link from "next/link";
 
-const footerLinks = [
-  { label: "About CommonLife", href: "/about" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Contact Us", href: "/contact" },
-];
+import { Wordmark } from "@/components/icons";
+import { COMMONLIFE_APP_URL, FOOTER_LEGAL } from "@/lib/links";
+
+const links = [
+  { href: "/about", label: "About Us" },
+  { href: "/commonlife-pilot", label: "CommonLife Pilot" },
+  { href: "/contact", label: "Contact" },
+] as const;
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-navy text-brand-lightBerry" role="contentinfo">
-      <div className="max-w-[1440px] mx-auto px-5 md:px-20 py-12 md:py-14">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-          <div>
-            <p className="font-heading font-bold text-white text-xl">CommonLife</p>
-            <p className="text-sm mt-1 max-w-xs">
-              Where Faith and Understanding Meet Clarity
-            </p>
-          </div>
-
-          <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="https://commonlife.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-                >
-                  CommonLife App ↗
-                </a>
-              </li>
-            </ul>
+    <footer className="bg-cl-paper">
+      <div className="hidden flex-col gap-6 px-12 pb-10 pt-6 min-[1180px]:flex">
+        <div className="h-px w-full bg-cl-deep-ocean" />
+        <div className="flex items-center justify-between gap-6">
+          <nav aria-label="Footer" className="flex gap-7">
+            {links.map((link) => (
+              <Link key={link.href} href={link.href} className="font-inter text-sm text-cl-deep-ocean">
+                {link.label}
+              </Link>
+            ))}
+            <a href={COMMONLIFE_APP_URL} target="_blank" rel="noopener noreferrer" className="font-inter text-sm text-cl-deep-ocean">
+              CommonLife App
+            </a>
           </nav>
+          <div className="flex items-center gap-6">
+            <p className="font-inter text-sm text-cl-ocean">{FOOTER_LEGAL}</p>
+            <Wordmark className="h-[13px] w-[110px]" />
+          </div>
         </div>
+      </div>
 
-        <div className="mt-10 pt-6 border-t border-white/10 text-xs text-brand-lightBerry/70">
-          © 2025 CommonLife, Inc. — All rights reserved. CommonLife® is a registered trademark.
-        </div>
+      <div className="flex flex-col gap-5 px-6 pb-9 pt-6 min-[1180px]:hidden">
+        <div className="h-px w-full bg-cl-deep-ocean" />
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-3">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className="font-inter text-sm text-cl-deep-ocean">
+              {link.label}
+            </Link>
+          ))}
+          <a href={COMMONLIFE_APP_URL} target="_blank" rel="noopener noreferrer" className="font-inter text-sm text-cl-deep-ocean">
+            CommonLife App
+          </a>
+        </nav>
+        <Wordmark className="h-[13px] w-[110px]" />
+        <p className="font-inter text-[13px] text-cl-ocean">{FOOTER_LEGAL}</p>
       </div>
     </footer>
   );

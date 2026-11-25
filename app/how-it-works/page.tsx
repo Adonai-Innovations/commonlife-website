@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteShell from "@/components/SiteShell";
+import { SCHEDULE_DEMO_URL } from "@/lib/links";
 import Link from "next/link";
 
 const pillars = [
@@ -65,26 +65,25 @@ export const metadata = {
 
 export default function HowItWorksPage() {
   return (
-    <>
-      <Navbar />
-
-      <main>
+    <SiteShell padded={false}>
+      
+      
         {/* Hero */}
         <section
-          className="bg-brand-navy text-white px-5 md:px-20 pt-24 pb-20 text-center"
+          className="bg-cl-deep-ocean text-cl-white px-5 md:px-20 pt-24 pb-20 text-center"
           aria-labelledby="hiw-hero-heading"
         >
           <div className="max-w-3xl mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase mb-4">
+            <p className="text-cl-blue text-xs font-lora font-semibold tracking-widest uppercase mb-4">
               How It Works
             </p>
             <h1
               id="hiw-hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl leading-tight md:leading-none mb-8"
+              className="font-lora font-semibold text-4xl md:text-6xl leading-tight md:leading-none mb-8"
             >
               Three Ways to Deploy CommonLife
             </h1>
-            <p className="text-brand-lightBerry text-lg md:text-xl">
+            <p className="text-cl-sky text-lg md:text-xl">
               From mobile app to website widget to deep analytics — CommonLife meets your
               congregation wherever they are.
             </p>
@@ -93,7 +92,7 @@ export default function HowItWorksPage() {
 
         {/* Three pillars */}
         <section
-          className="bg-white px-5 md:px-20 py-20 md:py-28"
+          className="bg-cl-white px-5 md:px-20 py-20 md:py-28"
           aria-labelledby="pillars-heading"
         >
           <div className="max-w-[1440px] mx-auto">
@@ -107,20 +106,20 @@ export default function HowItWorksPage() {
                   className={`flex flex-col ${i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} gap-12 items-center`}
                 >
                   <div className="flex-1">
-                    <div className="inline-flex items-center justify-center w-12 h-10 rounded bg-brand-navy text-brand-lightBerry text-sm font-heading font-bold mb-6">
+                    <div className="inline-flex items-center justify-center w-12 h-10 rounded bg-cl-deep-ocean text-cl-sky text-sm font-lora font-semibold mb-6">
                       {pillar.num}
                     </div>
                     <span className="block text-5xl mb-4" role="img" aria-hidden="true">
                       {pillar.icon}
                     </span>
-                    <h3 className="font-heading font-bold text-2xl md:text-3xl text-brand-navy mb-4">
+                    <h3 className="font-lora font-semibold text-2xl md:text-3xl text-cl-deep-ocean mb-4">
                       {pillar.title}
                     </h3>
-                    <p className="text-brand-navy/70 text-base leading-relaxed mb-6">{pillar.body}</p>
+                    <p className="text-cl-deep-ocean/70 text-base leading-relaxed mb-6">{pillar.body}</p>
                     <ul className="space-y-2">
                       {pillar.benefits.map((b) => (
-                        <li key={b} className="flex items-center gap-3 text-sm text-brand-navy/80">
-                          <span className="w-5 h-5 rounded-full bg-brand-berry/20 flex items-center justify-center text-brand-berry text-xs shrink-0" aria-hidden="true">
+                        <li key={b} className="flex items-center gap-3 text-sm text-cl-deep-ocean/80">
+                          <span className="w-5 h-5 rounded-full bg-cl-blue/20 flex items-center justify-center text-cl-blue text-xs shrink-0" aria-hidden="true">
                             ✓
                           </span>
                           {b}
@@ -128,7 +127,7 @@ export default function HowItWorksPage() {
                       ))}
                     </ul>
                   </div>
-                  <div className="flex-1 bg-brand-offWhite rounded-2xl h-64 flex items-center justify-center" aria-hidden="true">
+                  <div className="flex-1 bg-cl-paper rounded-2xl h-64 flex items-center justify-center" aria-hidden="true">
                     <span className="text-8xl opacity-30">{pillar.icon}</span>
                   </div>
                 </article>
@@ -139,23 +138,25 @@ export default function HowItWorksPage() {
 
         {/* Pilot CTA */}
         <section
-          className="bg-brand-berry text-white px-5 md:px-20 py-20 text-center"
+          className="bg-cl-blue text-cl-white px-5 md:px-20 py-20 text-center"
           aria-labelledby="pilot-heading"
         >
           <div className="max-w-2xl mx-auto">
             <h2
               id="pilot-heading"
-              className="font-heading font-bold text-3xl md:text-4xl mb-6"
+              className="font-lora font-semibold text-3xl md:text-4xl mb-6"
             >
               Start Your 30-Day Free Pilot
             </h2>
-            <p className="text-white/80 text-lg mb-10">
+            <p className="text-cl-white/80 text-lg mb-10">
               No credit card required. Full access. Real results in 30 days or we help you onboard
               free for another month.
             </p>
             <Link
-              href="/contact"
-              className="inline-flex justify-center items-center px-8 py-4 rounded bg-white text-brand-berry font-heading font-semibold hover:bg-brand-offWhite transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              href={SCHEDULE_DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex justify-center items-center px-8 py-4 rounded-full bg-cl-white text-cl-deep-ocean font-lora font-semibold hover:bg-cl-paper transition-colors focus-visible:outline-2 focus-visible:outline-cl-white focus-visible:outline-offset-2"
             >
               Schedule a Demo →
             </Link>
@@ -164,16 +165,16 @@ export default function HowItWorksPage() {
 
         {/* FAQ */}
         <section
-          className="bg-white px-5 md:px-20 py-20 md:py-28"
+          className="bg-cl-white px-5 md:px-20 py-20 md:py-28"
           aria-labelledby="faq-heading"
         >
           <div className="max-w-3xl mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
+            <p className="text-cl-blue text-xs font-lora font-semibold tracking-widest uppercase text-center mb-4">
               FAQ
             </p>
             <h2
               id="faq-heading"
-              className="font-heading font-bold text-3xl md:text-4xl text-brand-navy text-center mb-16"
+              className="font-lora font-semibold text-3xl md:text-4xl text-cl-deep-ocean text-center mb-16"
             >
               Common Questions
             </h2>
@@ -182,20 +183,18 @@ export default function HowItWorksPage() {
               {faqs.map((faq) => (
                 <div
                   key={faq.q}
-                  className="border border-brand-offWhite rounded-xl p-7"
+                  className="border border-cl-paper rounded-xl p-7"
                 >
-                  <dt className="font-heading font-bold text-base text-brand-navy mb-3">
+                  <dt className="font-lora font-semibold text-base text-cl-deep-ocean mb-3">
                     {faq.q}
                   </dt>
-                  <dd className="text-brand-navy/70 text-sm leading-relaxed">{faq.a}</dd>
+                  <dd className="text-cl-deep-ocean/70 text-sm leading-relaxed">{faq.a}</dd>
                 </div>
               ))}
             </dl>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </>
+      
+    </SiteShell>
   );
 }
