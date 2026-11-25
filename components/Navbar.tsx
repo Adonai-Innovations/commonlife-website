@@ -6,7 +6,6 @@ import { APP_URL, marketingRoutes } from "@/lib/site-links";
 
 const navLinks = [
   { label: "About CommonLife", href: marketingRoutes.about, external: false },
-  { label: "CommonLife Pilot", href: marketingRoutes.pilot, external: false },
   { label: "Contact", href: marketingRoutes.contact, external: false },
   { label: "CommonLife App", href: APP_URL, external: true },
 ] as const;

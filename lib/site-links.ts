@@ -4,6 +4,5 @@ export const APP_URL = "https://app.commonlife.ai";
 export const marketingRoutes = {
   home: "/",
   about: "/about",
-  pilot: "/commonlife-pilot",
   contact: "/contact",
 } as const;
