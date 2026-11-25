@@ -9,16 +9,16 @@
   --cl-white: #ffffff;
   --cl-paper: #f5f7f9;
   --cl-amber: #9e5a10;
-  --scrim-side: 0.8;
-  --scrim-v0: 0.6;
-  --scrim-v20: 0;
-  --scrim-v30: 0.05;
-  --scrim-v62: 0.8;
-  --scrim-v100: 0.96;
-  --scrim-m0: 0.6;
-  --scrim-m18: 0.05;
-  --scrim-m42: 0.82;
-  --scrim-m100: 0.97;
+  --scrim-side: 0.88;
+  --scrim-v0: 0.84;
+  --scrim-v20: 0.72;
+  --scrim-v30: 0.66;
+  --scrim-v62: 0.92;
+  --scrim-v100: 0.98;
+  --scrim-m0: 0.86;
+  --scrim-m18: 0.74;
+  --scrim-m42: 0.92;
+  --scrim-m100: 0.98;
 }
 
 .horizon {
@@ -700,7 +700,7 @@
     180deg,
     rgba(6, 47, 69, var(--scrim-m0)) 0%,
     rgba(6, 47, 69, var(--scrim-m18)) 18%,
-    rgba(6, 47, 69, var(--scrim-m42)) 42%,
+    rgba(6, 47, 69, var(--scrim-m42)) 46%,
     rgba(6, 47, 69, var(--scrim-m100)) 100%
   );
 }
@@ -1236,25 +1236,26 @@ select.control.is-set {
       linear-gradient(
         90deg,
         rgba(6, 47, 69, var(--scrim-side)) 0%,
-        rgba(6, 47, 69, 0) 60%
+        rgba(6, 47, 69, 0.55) 68%,
+        rgba(6, 47, 69, 0.28) 100%
       ),
       linear-gradient(
         180deg,
         rgba(6, 47, 69, var(--scrim-v0)) 0%,
-        rgba(6, 47, 69, var(--scrim-v20)) 20%,
-        rgba(6, 47, 69, var(--scrim-v30)) 30%,
+        rgba(6, 47, 69, var(--scrim-v20)) 14%,
+        rgba(6, 47, 69, var(--scrim-v30)) 36%,
         rgba(6, 47, 69, var(--scrim-v62)) 62%,
         rgba(6, 47, 69, var(--scrim-v100)) 100%
       );
   }
   .scrim[data-side="right"] {
     background-image:
-      linear-gradient(90deg, rgba(6, 47, 69, 0) 40%, rgba(6, 47, 69, var(--scrim-side)) 100%),
+      linear-gradient(90deg, rgba(6, 47, 69, 0.28) 0%, rgba(6, 47, 69, 0.55) 32%, rgba(6, 47, 69, var(--scrim-side)) 100%),
       linear-gradient(
         180deg,
         rgba(6, 47, 69, var(--scrim-v0)) 0%,
-        rgba(6, 47, 69, var(--scrim-v20)) 20%,
-        rgba(6, 47, 69, var(--scrim-v30)) 30%,
+        rgba(6, 47, 69, var(--scrim-v20)) 14%,
+        rgba(6, 47, 69, var(--scrim-v30)) 36%,
         rgba(6, 47, 69, var(--scrim-v62)) 62%,
         rgba(6, 47, 69, var(--scrim-v100)) 100%
       );
