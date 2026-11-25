@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 
 const tiers = [
@@ -87,8 +85,6 @@ export const metadata = {
 export default function PricingPage() {
   return (
     <>
-      <Navbar />
-
       <main>
         {/* Hero */}
         <section
@@ -268,7 +264,6 @@ export default function PricingPage() {
         </section>
       </main>
 
-      <Footer />
     </>
   );
 }

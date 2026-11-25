@@ -18,6 +18,15 @@ const nextConfig = {
       bodySizeLimit: "100kb",
     },
   },
+  async redirects() {
+    return [
+      {
+        source: "/about-commonlife",
+        destination: "/about",
+        statusCode: 301,
+      },
+    ];
+  },
   async headers() {
     return [
       {

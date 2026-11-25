@@ -1,9 +1,20 @@
 @import "tailwindcss";
 @config "../tailwind.config.mjs";
 
+@theme {
+  --color-clDeepOcean: #062f45;
+  --color-clOceanCard: #093a56;
+  --color-clOcean: #0b4a6b;
+  --color-clBlue: #1370af;
+  --color-clSky: #8eb5db;
+  --color-clWhite: #ffffff;
+  --color-clPaper: #f5f7f9;
+  --color-clAmber: #9e5a10;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #101832;
+  --background: #062f45;
+  --foreground: #ffffff;
 }
 
 @layer base {
@@ -21,4 +32,8 @@
 
 @utility text-balance {
   text-wrap: balance;
+}
+
+.font-lora {
+  font-family: var(--font-lora), serif;
 }

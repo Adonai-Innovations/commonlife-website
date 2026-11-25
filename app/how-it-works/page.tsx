@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 
 const pillars = [
@@ -66,8 +64,6 @@ export const metadata = {
 export default function HowItWorksPage() {
   return (
     <>
-      <Navbar />
-
       <main>
         {/* Hero */}
         <section
@@ -195,7 +191,6 @@ export default function HowItWorksPage() {
         </section>
       </main>
 
-      <Footer />
     </>
   );
 }
