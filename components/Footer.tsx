@@ -27,7 +27,7 @@ export default function Footer() {
           </Link>
 
           <nav aria-label="Footer">
-            <ul className="flex flex-col gap-5 min-[1100px]:flex-row min-[1100px]:items-center min-[1100px]:gap-9">
+            <ul className="flex flex-col gap-[14px] min-[1100px]:flex-row min-[1100px]:items-center min-[1100px]:gap-9">
               {footerLinks.map((link) => (
                 <li key={link.label}>
                   {link.external ? (
@@ -51,7 +51,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="h-px w-full bg-clSky" role="separator" />
+        <div className="h-px w-full bg-clSky/30" role="separator" />
 
         <p className="font-inter text-[13px] leading-normal text-clSky min-[1100px]:text-sm">
           © CommonLife, Inc. All rights reserved.

@@ -8,7 +8,7 @@ export default function IndexRow({ title, body, heading }: IndexRowProps) {
   const Title = heading;
 
   return (
-    <article className="border-t border-clDeepOcean py-7">
+    <article className="border-t border-clDeepOcean/14 py-7">
       <Title className="font-lora text-[26px] font-semibold leading-[34px] text-clDeepOcean">
         {title}
       </Title>

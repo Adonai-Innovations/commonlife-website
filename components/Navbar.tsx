@@ -40,8 +40,8 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header className="border-b border-clDeepOcean bg-clWhite text-clDeepOcean">
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-[18px] min-[1100px]:px-10 min-[1100px]:py-6 min-[1440px]:px-[120px]">
+    <header className="border-b border-clDeepOcean/14 bg-clWhite text-clDeepOcean">
+      <div className="mx-auto flex h-[60px] w-full max-w-[1440px] items-center justify-between px-6 min-[1100px]:h-auto min-[1100px]:px-10 min-[1100px]:py-6 min-[1440px]:px-[120px]">
         <Link
           href={marketingRoutes.home}
           className={`rounded-sm ${focusLight}`}

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import IndexRow from "@/components/IndexRow";
 import Navbar from "@/components/Navbar";
-import PilotForm from "@/components/PilotForm";
 import { marketingRoutes } from "@/lib/site-links";
 
 export const metadata: Metadata = {
@@ -83,10 +82,10 @@ export default function HomePage() {
       <main id="main">
         <section className="bg-clWhite" aria-labelledby="hero-heading">
           <div className={`${shell} flex flex-col gap-6 pb-14 pt-6 min-[1100px]:flex-row min-[1100px]:items-center min-[1100px]:gap-12 min-[1100px]:pb-28 min-[1100px]:pt-24 min-[1280px]:gap-20`}>
-            <div className="order-2 flex flex-col gap-6 min-[1100px]:order-1 min-[1100px]:w-[600px] min-[1100px]:shrink-0 min-[1100px]:gap-8">
+            <div className="order-2 flex w-full max-w-[720px] flex-col gap-6 min-[1100px]:order-1 min-[1100px]:w-[600px] min-[1100px]:max-w-none min-[1100px]:shrink-0 min-[1100px]:gap-8">
               <h1
                 id="hero-heading"
-                className="font-lora text-[40px] font-bold leading-[46px] tracking-[-0.015em] text-clDeepOcean min-[1100px]:text-[76px] min-[1100px]:leading-[84px]"
+                className="font-lora text-[40px] font-bold leading-[46px] tracking-[-0.015em] text-clDeepOcean min-[768px]:text-[56px] min-[768px]:leading-[64px] min-[1100px]:text-[76px] min-[1100px]:leading-[84px]"
               >
                 Extend Pastoral Care Beyond Sunday
               </h1>
@@ -104,14 +103,14 @@ export default function HomePage() {
                 <img src="/homepage/icon-arrow-right.svg" alt="" width={18} height={18} />
               </Link>
             </div>
-            <div className="relative order-1 h-[340px] w-full min-[1100px]:order-2 min-[1100px]:h-[640px] min-[1100px]:min-w-0 min-[1100px]:flex-1">
+            <div className="relative order-1 h-[340px] w-full min-[768px]:h-[480px] min-[1100px]:order-2 min-[1100px]:h-[640px] min-[1100px]:min-w-0 min-[1100px]:flex-1">
               <Image
                 src="/homepage/photo-mother-and-son-church-pew.jpeg"
                 alt="Mother and son in a church pew"
                 fill
                 priority
                 sizes="(min-width: 1100px) 520px, 100vw"
-                className="object-cover"
+                className="object-cover object-[center_18%] min-[1100px]:object-center"
               />
             </div>
           </div>
@@ -136,7 +135,7 @@ export default function HomePage() {
           <div className={`${shell} py-16 min-[1100px]:py-20 min-[1440px]:py-[120px]`}>
             <div className="grid grid-cols-[4px_minmax(0,1fr)] gap-x-6 gap-y-8 min-[1100px]:max-w-[900px] min-[1100px]:gap-x-10 min-[1100px]:gap-y-6">
               <div
-                className="col-start-1 row-start-1 h-[136px] w-1 bg-clAmber min-[1100px]:h-[210px]"
+                className="col-start-1 row-start-1 h-[150px] w-1 bg-clAmber min-[1100px]:h-[210px]"
                 aria-hidden="true"
               />
               <div className="col-start-2 row-start-1 flex flex-col gap-6">
@@ -158,7 +157,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="border-t border-clDeepOcean bg-clWhite" aria-labelledby="product-heading">
+        <section className="border-t border-clDeepOcean/14 bg-clWhite" aria-labelledby="product-heading">
           <div className={`${shell} py-16 min-[1100px]:py-20 min-[1440px]:py-[120px]`}>
             <h2
               id="product-heading"
@@ -168,7 +167,7 @@ export default function HomePage() {
             </h2>
             <div className="mt-10 flex flex-col gap-10 min-[1100px]:mt-16 min-[1100px]:flex-row min-[1100px]:items-start min-[1100px]:gap-16 min-[1280px]:gap-24">
               <div className="flex h-[460px] w-full shrink-0 items-center justify-center rounded-[4px] bg-clDeepOcean min-[1100px]:h-[760px] min-[1100px]:w-[420px]">
-                <div className="relative h-[400px] w-[190px] overflow-hidden rounded-[28px] border-8 border-clOceanCard min-[1100px]:h-[634px] min-[1100px]:w-[300px] min-[1100px]:rounded-[36px]">
+                <div className="relative h-[400px] w-[190px] overflow-hidden rounded-[24px] border-6 border-clOceanCard min-[1100px]:h-[634px] min-[1100px]:w-[300px] min-[1100px]:rounded-[36px] min-[1100px]:border-8">
                   <Image
                     src="/homepage/app-screen-sermon-on-forgiveness.jpeg"
                     alt="Sermon on forgiveness"
@@ -208,24 +207,23 @@ export default function HomePage() {
         </section>
 
         <section className="bg-clPaper" aria-labelledby="pilot-heading">
-          <div className={`${shell} flex flex-col gap-8 pb-[68px] pt-[72px] min-[1100px]:grid min-[1100px]:grid-cols-[480px_minmax(0,1fr)] min-[1100px]:gap-x-16 min-[1100px]:gap-y-6 min-[1100px]:py-20 min-[1280px]:gap-x-24 min-[1440px]:py-[120px]`}>
-            <h2
-              id="pilot-heading"
-              className="font-lora text-[30px] font-bold leading-[38px] tracking-[-0.01em] text-clDeepOcean min-[1100px]:col-start-1 min-[1100px]:text-[48px] min-[1100px]:leading-[58px]"
-            >
-              Apply to Become a Pilot Church
-            </h2>
-            <p className="font-inter text-base leading-[26px] text-clDeepOcean min-[1100px]:col-start-1 min-[1100px]:text-[18px] min-[1100px]:leading-[30px]">
-              We’re working with a limited number of churches for the pilot. This short application
-              helps us understand your church, your current challenges, and which level of support
-              would be the best fit.
-            </p>
-            <p className="order-last font-inter text-[15px] font-semibold leading-6 text-clDeepOcean min-[1100px]:order-none min-[1100px]:col-start-1 min-[1100px]:text-base min-[1100px]:leading-[26px]">
-              No obligation, and no strings attached! Most applications take less than 2 minutes to
-              complete.
-            </p>
-            <div className="min-[1100px]:col-start-2 min-[1100px]:row-span-3 min-[1100px]:row-start-1">
-              <PilotForm />
+          <div className={`${shell} py-16 min-[1100px]:py-20 min-[1440px]:py-[120px]`}>
+            <div className="flex max-w-[480px] flex-col gap-6">
+              <h2
+                id="pilot-heading"
+                className="font-lora text-[30px] font-bold leading-[38px] tracking-[-0.01em] text-clDeepOcean min-[1100px]:text-[48px] min-[1100px]:leading-[58px]"
+              >
+                Apply to Become a Pilot Church
+              </h2>
+              <p className="font-inter text-base leading-[26px] text-clDeepOcean min-[1100px]:text-[18px] min-[1100px]:leading-[30px]">
+                We’re working with a limited number of churches for the pilot. This short
+                application helps us understand your church, your current challenges, and which
+                level of support would be the best fit.
+              </p>
+              <p className="font-inter text-[15px] font-semibold leading-6 text-clDeepOcean min-[1100px]:text-base min-[1100px]:leading-[26px]">
+                No obligation, and no strings attached! Most applications take less than 2 minutes
+                to complete.
+              </p>
             </div>
           </div>
         </section>
