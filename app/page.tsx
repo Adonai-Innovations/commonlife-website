@@ -1,359 +1,237 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import IndexRow from "@/components/IndexRow";
+import Navbar from "@/components/Navbar";
+import { marketingRoutes } from "@/lib/site-links";
 
-const stats = [
-  { value: "500+", label: "Churches Served" },
-  { value: "24/7", label: "AI Availability" },
-  { value: "6 Tools", label: "Ministry Features" },
-  { value: "Bible-First", label: "Verified Sources" },
-];
+export const metadata: Metadata = {
+  title: "Extend Pastoral Care Beyond Sunday — CommonLife",
+  description:
+    "Church leaders are facing increasing demand for guidance without additional staff or time. The CommonLife Pilot Program helps extend pastoral care, reduce repetitive workload, and support your congregation throughout the week.",
+  openGraph: {
+    title: "Extend Pastoral Care Beyond Sunday — CommonLife",
+    description:
+      "The CommonLife Pilot Program helps extend pastoral care, reduce repetitive workload, and support your congregation throughout the week.",
+  },
+};
 
-const valueProps = [
+const challengeRows = [
   {
-    icon: "📖",
-    title: "Biblically Sound Answers",
-    body: "Scholar-verified responses grounded in scripture — never generic AI hallucinations.",
+    title: "Questions Are Happening Daily, Not Weekly",
+    body: "Your congregation is no longer waiting for Sunday. Questions about faith, life, and scripture are happening throughout the week — in real time.",
   },
   {
-    icon: "🤝",
-    title: "Accessible to All",
-    body: "Designed for all ages and experience levels, from new believers to seminary students.",
+    title: "Pastoral Capacity Is Already Maxed",
+    body: "Senior and executive pastors are operating at full capacity. There is limited time to respond to every question, need, or conversation.",
   },
   {
-    icon: "🏠",
-    title: "Built for Real Life",
-    body: "Practical answers for faith questions that arise in everyday life and ministry.",
+    title: "People Expect Immediate Guidance",
+    body: "When questions arise, people look for answers immediately. If the church is not accessible in that moment, they will look elsewhere.",
   },
   {
-    icon: "🔌",
-    title: "Seamless Integration",
-    body: "Embed in your church website, app, or classroom with minimal technical effort.",
-  },
-];
-
-const platformFeatures = [
-  {
-    icon: "💬",
-    title: "Biblically Verified AI Chat",
-    body: "Scripture-based Q&A using only vetted Christian sources.",
-  },
-  {
-    icon: "🎓",
-    title: "Education & Classroom Mode",
-    body: "Purpose-built tools for Bible colleges and seminaries.",
-  },
-  {
-    icon: "📚",
-    title: "Lesson & Study Creator",
-    body: "Generate custom devotionals and study guides in minutes.",
-  },
-  {
-    icon: "⛪",
-    title: "Church Integration Tools",
-    body: "Embed the AI widget directly on your church website or app.",
-  },
-  {
-    icon: "👨‍👩‍👧",
-    title: "Personal & Family Use",
-    body: "Daily guidance and devotionals for individuals and families.",
-  },
-  {
-    icon: "❤️",
-    title: "Relational Focus",
-    body: "Support for parenting, relationships, anxiety, and more.",
+    title: "Scaling Through Hiring Is Not Sustainable",
+    body: "Adding staff to meet demand is costly and slow. Most churches need a way to extend care and guidance without increasing headcount.",
   },
 ];
 
-const useCases = [
+const capabilityRows = [
   {
-    icon: "🏛️",
-    title: "Large & Multi-Campus Churches",
-    body: "Scale ministry support without scaling headcount.",
+    title: "Support Pastoral Care Without Adding Workload",
+    body: "CommonLife is designed to reduce friction, not create it—supporting pastoral care in a way that fits into existing workflows rather than adding new responsibilities.",
   },
   {
-    icon: "⚡",
-    title: "Youth Ministries",
-    body: "Engage the next generation with biblically grounded answers.",
+    title: "Reduce Repetitive Pastoral Questions",
+    body: "CommonLife handles first-level, recurring questions, allowing pastors to focus on more complex, high-impact conversations that require personal care and discernment.",
   },
   {
-    icon: "🎓",
-    title: "Bible Colleges & Seminaries",
-    body: "Classroom-ready tools built for academic study.",
+    title: "Extend Sermon Impact Beyond Sunday",
+    body: "CommonLife allows members to revisit themes, ask follow-up questions, and engage with the message throughout the week—turning a single moment into ongoing discipleship.",
   },
   {
-    icon: "✈️",
-    title: "Mission Teams",
-    body: "Access biblical resources anywhere, online or offline.",
+    title: "Provide Immediate Guidance During the Week",
+    body: "CommonLife provides a way for members to receive thoughtful, accessible responses when they need them, rather than waiting days to connect with someone at the church.",
   },
   {
-    icon: "🫂",
-    title: "Christian Counselors",
-    body: "Scripture-backed support for pastoral care and counseling.",
+    title: "Increase Engagement Without Increasing Staff",
+    body: "CommonLife creates a consistent layer of interaction throughout the week, allowing more people to stay connected without requiring additional hires or administrative burden.",
   },
   {
-    icon: "🏡",
-    title: "Home Churches & Small Groups",
-    body: "Simple, affordable discipleship for any size community.",
+    title: "Gain Visibility Into Real Congregational Needs",
+    body: "CommonLife helps surface patterns in prayer requests and questions, giving leadership better insight into the real needs of the church and where to focus attention.",
   },
 ];
 
-const deploySteps = [
-  {
-    num: "01",
-    icon: "📱",
-    title: "App Integration",
-    body: "Available on iOS, Android, and web. Your congregation accesses CommonLife from any device, anytime.",
-  },
-  {
-    num: "02",
-    icon: "🌐",
-    title: "Website Embedding",
-    body: "Drop our widget into your existing church website or ministry platform in minutes — no dev team needed.",
-  },
-  {
-    num: "03",
-    icon: "📊",
-    title: "Community Data Insights",
-    body: "Optional analytics reveal emerging prayer burdens and discipleship gaps across your congregation.",
-  },
-];
+const shell = "mx-auto w-full max-w-[1440px] px-6 min-[768px]:px-10 min-[1440px]:px-[120px]";
+const tabletCap = "min-[769px]:max-w-[720px] min-[1180px]:max-w-none";
+
+const linkFocus =
+  "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clBlue";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="cl-home bg-clWhite font-inter text-clDeepOcean">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-clWhite focus:px-4 focus:py-3 focus:font-inter focus:text-base focus:font-semibold focus:text-clDeepOcean focus:outline-2 focus:outline-offset-2 focus:outline-clBlue"
+      >
+        Skip to content
+      </a>
       <Navbar />
 
-      <main>
-        {/* Hero */}
-        <section
-          className="bg-brand-navy text-white px-5 md:px-20 pt-24 pb-28 text-center"
-          aria-labelledby="hero-heading"
-        >
-          <div className="max-w-[1000px] mx-auto">
-            <div className="inline-flex items-center px-5 py-2 rounded-full border border-brand-berry/40 text-brand-lightBerry text-sm mb-8">
-              AI-Powered Ministry Platform
-            </div>
-            <h1
-              id="hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none mb-8"
-            >
-              Where Faith and Understanding Meet Clarity
-            </h1>
-            <p className="text-brand-lightBerry text-lg md:text-xl max-w-2xl mx-auto mb-12">
-              Instant, trustworthy, Bible-based insight for churches, schools, and families. Built
-              on biblically verified sources — not generic AI.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold text-base hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+      <main id="main">
+        <section className="bg-clWhite" aria-labelledby="hero-heading">
+          <div className={`${shell} flex flex-col gap-6 pb-14 pt-6 min-[1180px]:flex-row min-[1180px]:items-center min-[1180px]:gap-12 min-[1180px]:pb-28 min-[1180px]:pt-24 min-[1280px]:gap-20`}>
+            <div className="order-2 flex w-full max-w-[720px] flex-col gap-6 min-[1180px]:order-1 min-[1180px]:w-[600px] min-[1180px]:max-w-none min-[1180px]:shrink-0 min-[1180px]:gap-8">
+              <h1
+                id="hero-heading"
+                className="font-lora text-[40px] font-bold leading-[46px] tracking-[-0.015em] text-clDeepOcean min-[768px]:text-[56px] min-[768px]:leading-[64px] min-[1180px]:text-[76px] min-[1180px]:leading-[84px]"
               >
-                Schedule a Demo
-              </Link>
+                Extend Pastoral Care Beyond Sunday
+              </h1>
+              <p className="font-lora text-[18px] font-normal leading-[28px] text-clDeepOcean min-[1180px]:text-[22px] min-[1180px]:leading-[34px]">
+                Church leaders are facing increasing demand for guidance without additional staff or
+                time. The CommonLife Pilot Program helps extend pastoral care, reduce repetitive
+                workload, and support your congregation throughout the week.
+              </p>
               <Link
-                href="/how-it-works"
-                className="inline-flex justify-center items-center px-8 py-4 rounded border border-brand-lightBerry/40 text-brand-lightBerry font-heading font-semibold text-base hover:border-brand-lightBerry hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                href={marketingRoutes.about}
+                className={`inline-flex w-fit items-center gap-2 py-[17px] font-inter text-base font-semibold text-clBlue hover:underline hover:underline-offset-4 ${linkFocus}`}
               >
-                Learn More
+                About CommonLife
+                {/* eslint-disable-next-line @next/next/no-img-element -- decorative arrow icon */}
+                <img src="/homepage/icon-arrow-right.svg" alt="" width={18} height={18} />
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* Trust Band */}
-        <section
-          className="bg-brand-navyDark text-white px-5 md:px-20 py-5"
-          aria-label="Key statistics"
-        >
-          <ul className="max-w-[1440px] mx-auto flex flex-wrap justify-around gap-6">
-            {stats.map((s) => (
-              <li key={s.label} className="text-center">
-                <p className="font-heading font-bold text-3xl text-white">{s.value}</p>
-                <p className="text-brand-lightBerry text-sm mt-1">{s.label}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Value Prop */}
-        <section
-          className="bg-white px-5 md:px-20 py-20 md:py-28"
-          aria-labelledby="value-prop-heading"
-        >
-          <div className="max-w-[1440px] mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
-              What Is CommonLife?
-            </p>
-            <h2
-              id="value-prop-heading"
-              className="font-heading font-bold text-3xl md:text-5xl text-brand-navy text-center max-w-xl mx-auto mb-6 text-balance"
-            >
-              A Safe, Faithful Resource for a Digital World
-            </h2>
-            <p className="text-brand-navy/70 text-lg text-center max-w-2xl mx-auto mb-16">
-              CommonLife uses trusted Christian sources instead of generic AI, delivering biblical
-              answers for Bible study, sermons, teaching, and daily guidance.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {valueProps.map((card) => (
-                <article key={card.title} className="bg-brand-offWhite rounded-xl p-7">
-                  <span className="text-3xl" role="img" aria-hidden="true">
-                    {card.icon}
-                  </span>
-                  <h3 className="font-heading font-bold text-lg text-brand-navy mt-4 mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-brand-navy/70 text-sm leading-relaxed">{card.body}</p>
-                </article>
-              ))}
+            <div className="relative order-1 h-[340px] w-full min-[768px]:h-[420px] min-[1180px]:order-2 min-[1180px]:h-[640px] min-[1180px]:min-w-0 min-[1180px]:flex-1">
+              <Image
+                src="/homepage/photo-mother-and-son-church-pew.jpeg"
+                alt="Mother and son in a church pew"
+                fill
+                priority
+                sizes="(min-width: 1100px) 520px, 100vw"
+                className="object-cover object-[center_18%] min-[1180px]:object-center"
+              />
             </div>
           </div>
         </section>
 
-        {/* Platform Features */}
-        <section
-          className="bg-brand-offWhite px-5 md:px-20 py-20 md:py-28"
-          aria-labelledby="platform-heading"
-        >
-          <div className="max-w-[1440px] mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
-              The CommonLife Platform
+        <section className="bg-clPaper">
+          <div className={`${shell} flex flex-col gap-10 pb-24 pt-[72px] min-[1180px]:flex-row min-[1180px]:items-start min-[1180px]:gap-16 min-[1180px]:py-20 min-[1280px]:gap-20 min-[1440px]:py-[120px]`}>
+            <div className={`${tabletCap} flex w-full flex-col gap-10 min-[1180px]:w-full min-[1180px]:flex-row min-[1180px]:items-start min-[1180px]:gap-16 min-[1280px]:gap-20`}>
+            <p className="font-inter text-base leading-[26px] text-clDeepOcean min-[1180px]:w-[520px] min-[1180px]:shrink-0 min-[1180px]:text-[18px] min-[1180px]:leading-[30px]">
+              CommonLife helps churches address this challenge by introducing a new layer of
+              support. This is not about replacing pastoral leadership. It is about extending it
+              without increasing staff or workload.
             </p>
-            <h2
-              id="platform-heading"
-              className="font-heading font-bold text-3xl md:text-5xl text-brand-navy text-center max-w-3xl mx-auto mb-16 text-balance"
-            >
-              Faith meets technology — built for the Church, powered by truth
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {platformFeatures.map((f) => (
-                <article key={f.title} className="bg-white rounded-xl p-7">
-                  <span className="text-2xl" role="img" aria-hidden="true">
-                    {f.icon}
-                  </span>
-                  <h3 className="font-heading font-bold text-base text-brand-navy mt-4 mb-2">
-                    {f.title}
-                  </h3>
-                  <p className="text-brand-navy/70 text-sm leading-relaxed">{f.body}</p>
-                </article>
+            <div className="min-w-0 flex-1">
+              {challengeRows.map((row) => (
+                <IndexRow key={row.title} title={row.title} body={row.body} heading="h2" />
               ))}
+            </div>
             </div>
           </div>
         </section>
 
-        {/* Use Cases */}
-        <section
-          className="bg-white px-5 md:px-20 py-20 md:py-28"
-          aria-labelledby="use-cases-heading"
-        >
-          <div className="max-w-[1440px] mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
-              Who Is It For?
-            </p>
-            <h2
-              id="use-cases-heading"
-              className="font-heading font-bold text-3xl md:text-5xl text-brand-navy text-center max-w-2xl mx-auto mb-16 text-balance"
-            >
-              Built for Every Corner of Ministry
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {useCases.map((uc) => (
-                <article
-                  key={uc.title}
-                  className="border border-brand-offWhite rounded-xl p-7 hover:border-brand-berry/30 transition-colors"
-                >
-                  <span className="text-2xl" role="img" aria-hidden="true">
-                    {uc.icon}
-                  </span>
-                  <h3 className="font-heading font-bold text-base text-brand-navy mt-4 mb-2">
-                    {uc.title}
-                  </h3>
-                  <p className="text-brand-navy/70 text-sm leading-relaxed">{uc.body}</p>
-                </article>
-              ))}
+        <section className="bg-clWhite">
+          <div className={`${shell} py-16 min-[1180px]:py-20 min-[1440px]:py-[120px]`}>
+            <div className={`${tabletCap} grid grid-cols-[4px_minmax(0,1fr)] gap-x-6 gap-y-8 min-[1180px]:max-w-[900px] min-[1180px]:gap-x-10 min-[1180px]:gap-y-6`}>
+              <div
+                className="col-start-1 row-start-1 h-[150px] w-1 bg-clAmber min-[1180px]:h-[210px]"
+                aria-hidden="true"
+              />
+              <div className="col-start-2 row-start-1 flex flex-col gap-6">
+                <blockquote className="font-lora text-[24px] italic leading-[34px] text-clDeepOcean min-[1180px]:text-[40px] min-[1180px]:leading-[54px]">
+                  <p>
+                    “Do not conform to the pattern of this world, but be transformed by the renewing
+                    of your mind.”
+                  </p>
+                </blockquote>
+                <p className="font-inter text-sm font-semibold text-clAmber min-[1180px]:text-[15px]">
+                  Romans 12:2
+                </p>
+              </div>
+              <p className="col-span-2 col-start-1 row-start-2 font-inter text-base leading-[26px] text-clDeepOcean min-[1180px]:col-span-1 min-[1180px]:col-start-2 min-[1180px]:text-[18px] min-[1180px]:leading-[30px]">
+                Unlike generic AI, CommonLife uses only trusted, doctrinally sound Christian
+                sources, ensuring every response is truth-based for your community’s confidence.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* How It Works preview */}
-        <section
-          className="bg-brand-offWhite px-5 md:px-20 py-20 md:py-28"
-          aria-labelledby="how-it-works-heading"
-        >
-          <div className="max-w-[1440px] mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
-              How It Works
-            </p>
+        <section className="border-t border-clDeepOcean/14 bg-clWhite" aria-labelledby="product-heading">
+          <div className={`${shell} py-16 min-[1180px]:py-20 min-[1440px]:py-[120px]`}>
             <h2
-              id="how-it-works-heading"
-              className="font-heading font-bold text-3xl md:text-5xl text-brand-navy text-center max-w-2xl mx-auto mb-16 text-balance"
+              id="product-heading"
+              className="max-w-[760px] font-lora text-[30px] font-bold leading-[38px] tracking-[-0.01em] text-clDeepOcean min-[1180px]:text-[48px] min-[1180px]:leading-[58px]"
             >
-              Three Ways to Deploy CommonLife
+              What can CommonLife do for your Church?
             </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {deploySteps.map((step) => (
-                <article key={step.num} className="bg-white rounded-xl p-8">
-                  <div className="inline-flex items-center justify-center w-10 h-8 rounded bg-brand-navy text-brand-lightBerry text-xs font-heading font-bold mb-4">
-                    {step.num}
-                  </div>
-                  <span className="block text-3xl mb-4" role="img" aria-hidden="true">
-                    {step.icon}
-                  </span>
-                  <h3 className="font-heading font-bold text-xl text-brand-navy mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-brand-navy/70 text-sm leading-relaxed">{step.body}</p>
-                </article>
-              ))}
+            <div className="mt-10 flex flex-col gap-10 min-[1180px]:mt-16 min-[1180px]:flex-row min-[1180px]:items-start min-[1180px]:gap-16 min-[1280px]:gap-24">
+              <div className="flex h-[460px] w-full shrink-0 items-center justify-center rounded-[4px] bg-clDeepOcean min-[768px]:h-[640px] min-[1180px]:h-[760px] min-[1180px]:w-[420px]">
+                <div className="relative h-[400px] w-[190px] overflow-hidden rounded-[24px] border-6 border-clOceanCard min-[1180px]:h-[634px] min-[1180px]:w-[300px] min-[1180px]:rounded-[36px] min-[1180px]:border-8">
+                  <Image
+                    src="/homepage/app-screen-sermon-on-forgiveness.jpeg"
+                    alt="Sermon on forgiveness"
+                    fill
+                    sizes="300px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className={`${tabletCap} min-w-0 min-[1180px]:flex-1`}>
+                {capabilityRows.map((row) => (
+                  <IndexRow key={row.title} title={row.title} body={row.body} heading="h3" />
+                ))}
+              </div>
             </div>
+          </div>
+        </section>
 
-            <div className="text-center mt-12">
-              <Link
-                href="/contact"
-                className="inline-flex items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-brand-navy focus-visible:outline-offset-2"
+        <section className="bg-clDeepOcean text-clWhite">
+          <figure className={`${shell} flex flex-col gap-8 py-20 min-[1180px]:gap-10 min-[1180px]:py-32`}>
+            <blockquote className={`${tabletCap} max-w-[1040px] font-lora text-[26px] font-normal leading-[36px] text-clWhite min-[1180px]:text-[44px] min-[1180px]:leading-[60px] min-[1180px]:tracking-[-0.22px]`}>
+              <p>
+                “Most pastors don’t need more tools — they need ways to lead and care at scale.
+                CommonLife helps address that in a way that’s actually usable.”
+              </p>
+            </blockquote>
+            <figcaption className="flex flex-col gap-1.5">
+              <p className="font-inter text-base font-semibold text-clWhite min-[1180px]:text-[17px]">
+                Russ Olmon
+              </p>
+              <p className="font-inter text-[15px] leading-6 text-clSky min-[1180px]:text-base min-[1180px]:leading-[26px]">
+                Founding President, Ministry Advantage · worked with over 1,000 churches across the
+                U.S., Canada, and Australia
+              </p>
+            </figcaption>
+          </figure>
+        </section>
+
+        <section className="bg-clPaper" aria-labelledby="pilot-heading">
+          <div className={`${shell} py-16 min-[1180px]:py-20 min-[1440px]:py-[120px]`}>
+            <div className="flex max-w-[480px] flex-col gap-6">
+              <h2
+                id="pilot-heading"
+                className="font-lora text-[30px] font-bold leading-[38px] tracking-[-0.01em] text-clDeepOcean min-[1180px]:text-[48px] min-[1180px]:leading-[58px]"
               >
-                Schedule a Demo →
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section
-          className="bg-brand-navy text-white px-5 md:px-20 py-24 text-center relative overflow-hidden"
-          aria-labelledby="cta-heading"
-        >
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-berry/10 pointer-events-none"
-            aria-hidden="true"
-          />
-          <div className="relative max-w-2xl mx-auto">
-            <h2
-              id="cta-heading"
-              className="font-heading font-bold text-3xl md:text-5xl mb-6 text-balance"
-            >
-              Ready to Bring CommonLife to Your Congregation?
-            </h2>
-            <p className="text-brand-lightBerry text-lg mb-10">
-              Join churches already using CommonLife to deepen discipleship and free up pastor time.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+                Apply to Become a Pilot Church
+              </h2>
+              <p className="font-inter text-base leading-[26px] text-clDeepOcean min-[1180px]:text-[18px] min-[1180px]:leading-[30px]">
+                We’re working with a limited number of churches for the pilot. This short
+                application helps us understand your church, your current challenges, and which
+                level of support would be the best fit.
+              </p>
+              <p className="font-inter text-[15px] font-semibold leading-6 text-clDeepOcean min-[1180px]:text-base min-[1180px]:leading-[26px]">
+                No obligation, and no strings attached! Most applications take less than 2 minutes
+                to complete.
+              </p>
               <Link
-                href="/contact"
-                className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                href={marketingRoutes.pilotApplication}
+                className={`inline-flex h-[53px] w-fit items-center rounded-[4px] bg-clBlue px-7 font-inter text-base font-semibold text-clWhite hover:bg-clOcean ${linkFocus}`}
               >
-                Schedule a Demo
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex justify-center items-center px-8 py-4 rounded border border-brand-lightBerry/40 text-brand-lightBerry font-heading font-semibold hover:border-brand-lightBerry hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
-              >
-                Contact Us
+                Apply to the Pilot
               </Link>
             </div>
           </div>
@@ -361,6 +239,6 @@ export default function HomePage() {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }

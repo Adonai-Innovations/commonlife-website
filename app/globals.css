@@ -3,7 +3,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #101832;
+  --foreground: #062f45;
 }
 
 @layer base {
@@ -21,4 +21,27 @@
 
 @utility text-balance {
   text-wrap: balance;
+}
+
+/* Direction A homepage. Colors are the eight cl* tokens only. */
+.cl-home {
+  caret-color: #062f45;
+  scrollbar-color: #062f45 #f5f7f9;
+}
+
+.cl-home ::selection {
+  background: #062f45;
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-home,
+  .cl-home *,
+  .cl-home *::before,
+  .cl-home *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
