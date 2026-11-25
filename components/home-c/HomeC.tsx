@@ -37,8 +37,6 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("hero");
   const [cinematic, setCinematic] = useState(true);
-  const [motionOn, setMotionOn] = useState(true);
-  const [ministry, setMinistry] = useState(0);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -57,7 +55,6 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
     const measure = () => {
       frame = 0;
       if (!motion.matches) {
-        setMotionOn(false);
         if (currentCinematic) {
           currentCinematic = false;
           setCinematic(false);
@@ -65,7 +62,6 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
         root.removeAttribute("data-animate");
         return;
       }
-      setMotionOn(true);
 
       const viewport = window.innerHeight;
       const heroRect = heroEl.getBoundingClientRect();
@@ -176,13 +172,12 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
           .chapters-sticky { display: none !important; }
           .chapters-static { display: block !important; }
           .topbar, .scroll-chrome { position: static !important; visibility: visible !important; }
-          .scroll-chrome { display: none !important; }
-          .hero-static-chrome { display: flex !important; }
+          .scroll-chrome, .hero-static-chrome { display: none !important; }
           .hero-lockup, .chapter-pane, .chapter-screen { opacity: 1 !important; visibility: visible !important; animation: none !important; }
         `}</style>
       </noscript>
 
-      <header className="topbar" inert={motionOn && !cinematic ? true : undefined}>
+      <header className="topbar">
         <div className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between px-5 min-[1180px]:h-[91px] min-[1180px]:px-12">
           <Link href={routes.home} className="shrink-0 rounded-sm">
             {/* Local SVG wordmark. next/image refuses SVG because dangerouslyAllowSVG is off. */}
@@ -268,11 +263,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
                     <p className="text-[12px] font-semibold tracking-[0.2em] text-clSky min-[1180px]:text-[13px]">
                       {chapter.counter}
                     </p>
-                    {chapter.title ? (
-                      <h2 className="font-lora text-[34px] font-medium leading-[40px] tracking-[-0.005em] text-clWhite min-[1180px]:text-[48px] min-[1180px]:leading-[56px]">
-                        {chapter.title}
-                      </h2>
-                    ) : null}
+                    <ChapterHeading chapter={chapter} />
                     {chapter.mobileBody ? (
                       <p className="text-[15px] leading-[24px] text-clSky min-[1180px]:hidden">
                         {chapter.mobileBody}
@@ -288,7 +279,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
               </div>
               <div className="chapter-stage">
                 <div className="chapter-glow" aria-hidden="true" />
-                <div className="relative aspect-[300/634] h-[min(400px,calc(100svh-400px))] w-auto overflow-hidden rounded-[36px] ring-8 ring-clOceanCard min-[1180px]:h-[min(634px,calc(100svh-230px))]">
+                <div className="chapter-device relative aspect-[300/634] h-[min(400px,calc(100svh-420px))] w-auto overflow-hidden rounded-[36px] ring-8 ring-clOceanCard min-[1180px]:h-[min(634px,calc(100svh-230px))]">
                   {chapters.map((chapter, index) => (
                     <div
                       key={chapter.id}
@@ -313,23 +304,22 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
           </div>
 
           <div className="chapters-static">
-            {chapters.map((chapter, index) => (
+            <div className="mx-auto w-full max-w-[600px] px-6 pt-8 min-[1180px]:max-w-[1200px] min-[1180px]:px-[clamp(24px,8vw,120px)]">
+              <ChapterNav active={activeIndex} onSelect={goToChapter} />
+            </div>
+            {chapters.map((chapter) => (
               <article
                 key={chapter.id}
                 id={chapter.id}
                 aria-label={chapter.title ?? chapter.label}
                 className="relative px-6 py-16 min-[1180px]:px-[clamp(24px,8vw,120px)] min-[1180px]:py-28"
               >
-                <div className="mx-auto grid max-w-[1200px] items-center gap-10 min-[1180px]:grid-cols-[minmax(0,380px)_minmax(180px,1fr)_minmax(140px,240px)]">
+                <div className="mx-auto grid max-w-[600px] items-center gap-10 min-[1180px]:max-w-[1200px] min-[1180px]:grid-cols-[minmax(0,420px)_minmax(180px,1fr)]">
                   <div className="flex flex-col gap-5">
                     <p className="text-[12px] font-semibold tracking-[0.2em] text-clSky min-[1180px]:text-[13px]">
                       {chapter.counter}
                     </p>
-                    {chapter.title ? (
-                      <h2 className="font-lora text-[34px] font-medium leading-[40px] tracking-[-0.005em] text-clWhite min-[1180px]:text-[48px] min-[1180px]:leading-[56px]">
-                        {chapter.title}
-                      </h2>
-                    ) : null}
+                    <ChapterHeading chapter={chapter} />
                     <p className="text-[15px] leading-[24px] text-clSky min-[1180px]:hidden">
                       {chapter.mobileBody ?? chapter.body}
                     </p>
@@ -348,7 +338,6 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
                       />
                     </div>
                   </div>
-                  <ChapterNav active={index} onSelect={goToChapter} />
                 </div>
               </article>
             ))}
@@ -381,7 +370,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
           className="bg-clDeepOcean px-6 pb-20 min-[1180px]:px-[120px] min-[1180px]:pb-[160px]"
         >
           <div className="mx-auto flex max-w-[1200px] flex-col gap-4">
-            <figure className="relative m-0 h-[220px] overflow-hidden min-[1180px]:h-[620px]">
+            <figure className="relative m-0 h-[240px] overflow-hidden min-[1180px]:h-[620px]">
               <Image
                 src={media.openBible.src}
                 alt={media.openBible.alt}
@@ -391,16 +380,16 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
               />
             </figure>
             <div className="flex flex-col gap-4 min-[1180px]:flex-row">
-              <figure className="relative m-0 h-[420px] overflow-hidden min-[1180px]:h-[720px] min-[1180px]:flex-1">
+              <figure className="relative m-0 h-[300px] overflow-hidden min-[1180px]:h-[720px] min-[1180px]:flex-1">
                 <Image
                   src={media.morning.src}
                   alt={media.morning.alt}
                   fill
                   sizes="(min-width: 1180px) 592px, 100vw"
-                  className="media-photo-late object-cover"
+                  className="media-photo-late object-cover object-[center_62%]"
                 />
               </figure>
-              <div className="flex items-center justify-center py-8 min-[1180px]:h-[720px] min-[1180px]:flex-1 min-[1180px]:bg-clOceanCard min-[1180px]:py-0">
+              <div className="flex items-center justify-center bg-clOceanCard py-10 min-[1180px]:h-[720px] min-[1180px]:flex-1 min-[1180px]:py-0">
                 <div className="relative h-[480px] w-[226px] overflow-hidden rounded-[34px] min-[1180px]:h-[613px] min-[1180px]:w-[290px] min-[1180px]:border-8 min-[1180px]:border-clDeepOcean">
                   <Image
                     src={media.study.src}
@@ -416,7 +405,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
         </section>
 
         <section className="bg-clDeepOcean px-6 pb-20 min-[1180px]:px-[120px] min-[1180px]:pb-[160px]">
-          <div className="mx-auto flex max-w-[1200px] flex-col gap-8 border border-clSky p-6 min-[1180px]:flex-row min-[1180px]:items-center min-[1180px]:gap-24 min-[1180px]:p-20">
+          <div className="mx-auto flex max-w-[1200px] flex-col gap-8 border border-clSky/30 p-6 min-[1180px]:flex-row min-[1180px]:items-center min-[1180px]:gap-24 min-[1180px]:p-20">
             <h2 className="font-lora text-[32px] leading-[40px] tracking-[-0.01em] text-clWhite min-[1180px]:w-[420px] min-[1180px]:shrink-0 min-[1180px]:text-[56px] min-[1180px]:leading-[64px]">
               {pilot.statement}
             </h2>
@@ -427,44 +416,20 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
               <p className="mt-6 text-[15px] leading-6 text-clSky min-[1180px]:text-[17px] min-[1180px]:leading-7">
                 {pilot.body}
               </p>
-              <div
-                role="radiogroup"
-                aria-label="Level of support"
-                className="mt-6 flex flex-col items-start gap-2.5 min-[1180px]:flex-row min-[1180px]:flex-wrap"
-                onKeyDown={(event) => {
-                  const nextKey = event.key === "ArrowRight" || event.key === "ArrowDown";
-                  const prevKey = event.key === "ArrowLeft" || event.key === "ArrowUp";
-                  if (!nextKey && !prevKey) return;
-                  event.preventDefault();
-                  const delta = nextKey ? 1 : -1;
-                  const next = (ministry + delta + pilot.ministries.length) % pilot.ministries.length;
-                  setMinistry(next);
-                  const group = event.currentTarget;
-                  const buttons = group.querySelectorAll<HTMLButtonElement>('[role="radio"]');
-                  buttons[next]?.focus();
-                }}
-              >
-                {pilot.ministries.map((label, index) => {
-                  const selected = index === ministry;
-                  return (
-                    <button
-                      key={label}
-                      type="button"
-                      role="radio"
-                      aria-checked={selected}
-                      tabIndex={selected ? 0 : -1}
-                      onClick={() => setMinistry(index)}
-                      className={
-                        selected
-                          ? "border border-clWhite bg-clWhite px-4 py-2.5 text-left text-[14px] font-semibold text-clDeepOcean"
-                          : "border border-clSky px-4 py-2.5 text-left text-[14px] font-medium text-clWhite hover:border-clWhite"
-                      }
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
+              <ul className="mt-6 flex list-none flex-col items-start gap-2.5 p-0 min-[1180px]:flex-row min-[1180px]:flex-wrap">
+                {pilot.ministries.map((label, index) => (
+                  <li
+                    key={label}
+                    className={
+                      index === 0
+                        ? "border border-clWhite bg-clWhite px-4 py-2.5 text-left text-[14px] font-semibold text-clDeepOcean"
+                        : "border border-clSky px-4 py-2.5 text-left text-[14px] font-medium text-clWhite"
+                    }
+                  >
+                    {label}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
@@ -508,11 +473,6 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
                   {footer.demo}
                 </a>
               </li>
-              <li>
-                <Link className={textLink} href={routes.contact}>
-                  {footer.contactUs}
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="mt-14 h-px w-full bg-clSky" />
@@ -525,6 +485,19 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
         </div>
       </footer>
     </div>
+  );
+}
+
+function ChapterHeading({ chapter }: { chapter: (typeof chapters)[number] }) {
+  if (chapter.title) {
+    return (
+      <h2 className="chapter-title font-lora text-[34px] font-medium leading-[40px] tracking-[-0.005em] text-clWhite min-[1180px]:text-[40px] min-[1180px]:leading-[48px] min-[1360px]:text-[48px] min-[1360px]:leading-[56px]">
+        {chapter.title}
+      </h2>
+    );
+  }
+  return (
+    <p className="text-[13px] font-semibold uppercase tracking-[0.22em] text-clWhite">{chapter.label}</p>
   );
 }
 
@@ -547,7 +520,7 @@ function Chrome({
       aria-hidden="true"
     >
       <div className="hidden min-[1180px]:block min-[1180px]:w-[360px]" />
-      <div className="h-[2px] w-12 overflow-hidden bg-clOceanCard min-[1180px]:w-[200px]">
+      <div className="h-[2px] w-[120px] overflow-hidden bg-clOceanCard min-[1180px]:w-[200px]">
         <div className="progress-fill h-full bg-clSky" />
       </div>
       <div className="min-[1180px]:flex min-[1180px]:w-[360px] min-[1180px]:justify-end">

@@ -66,12 +66,14 @@
   visibility: visible;
 }
 
-.scroll-chrome {
+.scroll-chrome,
+.hero-static-chrome {
   display: none;
 }
 
-.hero-static-chrome {
-  display: flex;
+.hero-lockup {
+  position: relative;
+  z-index: 1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -108,25 +110,27 @@
     display: none;
   }
 
-  .hero-phone {
-    animation: hero-phone linear both;
-    animation-timeline: --hero-tl;
-    animation-range: contain 0% contain 100%;
-    animation-duration: 1s;
-  }
+  @supports (animation-timeline: view()) {
+    .hero-phone,
+    .hero-glow,
+    .hero-lockup {
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --hero-tl;
+      animation-range: contain 0% contain 100%;
+    }
 
-  .hero-glow {
-    animation: hero-glow linear both;
-    animation-timeline: --hero-tl;
-    animation-range: contain 0% contain 100%;
-    animation-duration: 1s;
-  }
+    .hero-phone {
+      animation-name: hero-phone;
+    }
 
-  .hero-lockup {
-    animation: hero-fade linear both;
-    animation-timeline: --hero-tl;
-    animation-range: contain 0% contain 100%;
-    animation-duration: 1s;
+    .hero-glow {
+      animation-name: hero-glow;
+    }
+
+    .hero-lockup {
+      animation-name: hero-fade;
+    }
   }
 
   .topbar,
@@ -135,6 +139,9 @@
     left: 0;
     right: 0;
     z-index: 40;
+  }
+
+  .topbar {
     background: #062f45;
   }
 
@@ -147,7 +154,6 @@
     display: flex;
   }
 
-  .home-c[data-cinematic="false"] .topbar,
   .home-c[data-cinematic="false"] .scroll-chrome {
     visibility: hidden;
     pointer-events: none;
@@ -232,12 +238,14 @@
 }
 
 @keyframes hero-fade {
-  0% {
-    opacity: 0;
+  from {
+    opacity: 0.85;
+    transform: translateY(10px);
   }
   30%,
-  100% {
+  to {
     opacity: 1;
+    transform: none;
   }
 }
 
@@ -251,7 +259,8 @@
   }
 
   .hero-lockup {
-    opacity: clamp(0, (var(--hero-p) - 0.02) / 0.28, 1);
+    opacity: max(0.85, var(--hero-p));
+    transform: translateY(calc((1 - var(--hero-p)) * 10px));
   }
 }
 
@@ -270,6 +279,12 @@
 @media (prefers-reduced-motion: no-preference) and (width >= 1180px) {
   .stage-pad {
     padding-top: 91px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (width < 1180px) {
+  .stage-pad {
+    padding-top: 120px;
   }
 }
 
@@ -312,18 +327,29 @@
   min-height: 0;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .chapter-copy {
   position: relative;
+  width: min(100%, 600px);
   min-height: 220px;
+  margin-inline: auto;
 }
 
 .chapter-stage {
   position: relative;
   z-index: 1;
+  display: flex;
+  width: 100%;
+  justify-content: center;
   margin-top: 1.5rem;
+}
+
+@media (width >= 1180px) and (width < 1360px) {
+  .chapter-device {
+    height: min(460px, calc(100svh - 320px));
+  }
 }
 
 @media (width >= 1180px) {
@@ -336,8 +362,9 @@
     position: absolute;
     top: 50%;
     left: clamp(24px, 8vw, 120px);
-    width: min(380px, 28vw);
+    width: min(420px, 34vw);
     min-height: 340px;
+    margin-inline: 0;
     transform: translateY(-50%);
   }
 
@@ -345,6 +372,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    width: auto;
     margin-top: 0;
     transform: translate(-50%, -50%);
   }
@@ -363,8 +391,14 @@
   }
 }
 
+@media (width >= 1180px) and (width < 1360px) {
+  .chapter-copy {
+    width: min(360px, 30vw);
+  }
+}
+
 @media (max-width: 1179px) {
-  .chapter-nav {
+  .chapters-sticky .chapter-nav {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -376,7 +410,7 @@
     border: 0;
   }
 
-  .chapter-nav:focus-within {
+  .chapters-sticky .chapter-nav:focus-within {
     position: relative;
     width: auto;
     height: auto;
@@ -388,6 +422,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: #062f45;
+  }
+
   .hero-phone,
   .hero-glow,
   .hero-lockup,

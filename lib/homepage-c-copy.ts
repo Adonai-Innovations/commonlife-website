@@ -130,7 +130,6 @@ export const footer = {
   contact: "Contact",
   app: "CommonLife App",
   demo: "Schedule a Demo",
-  contactUs: "Contact Us",
   legal: "© CommonLife, Inc. All rights reserved.",
   tagline: "Built for the Church, powered by truth.",
 } as const;
