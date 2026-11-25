@@ -33,3 +33,7 @@
 @utility text-balance {
   text-wrap: balance;
 }
+
+.font-lora {
+  font-family: var(--font-lora), serif;
+}

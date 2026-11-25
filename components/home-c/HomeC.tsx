@@ -1,34 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
 import {
   chapters,
   chapterIndexFromProgress,
-  footer,
   hero,
   media,
-  nav,
   pilot,
   rangeProgress,
-  routes,
   statement,
   storyProgress,
 } from "@/lib/homepage-c-copy";
 import "./home-c.css";
 
-const outlinePill =
-  "inline-flex items-center rounded-full border border-clWhite px-5 py-[11px] text-[12px] font-semibold uppercase tracking-[0.18em] text-clWhite hover:bg-white/10";
-const capsLink =
-  "text-[12px] font-semibold uppercase tracking-[0.18em] text-clWhite hover:underline";
-const textLink = "text-[15px] leading-normal text-clWhite hover:underline";
-
 type Phase = "hero" | "chapters";
 
-export default function HomeC({ fontVariable }: { fontVariable: string }) {
+export default function HomeC() {
   const rootRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const chaptersRef = useRef<HTMLElement>(null);
@@ -160,7 +150,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
   return (
     <div
       ref={rootRef}
-      className={`home-c ${fontVariable}`}
+      className="home-c"
       data-chapter={activeIndex}
       data-cinematic={cinematic ? "true" : "false"}
     >
@@ -176,43 +166,6 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
           .hero-lockup, .chapter-pane, .chapter-screen { opacity: 1 !important; visibility: visible !important; animation: none !important; }
         `}</style>
       </noscript>
-
-      <header className="topbar">
-        <div className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between px-5 min-[1180px]:h-[91px] min-[1180px]:px-12">
-          <Link href={routes.home} className="shrink-0 rounded-sm">
-            {/* Local SVG wordmark. next/image refuses SVG because dangerouslyAllowSVG is off. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/homepage-c/logo-wordmark-on-dark.svg"
-              alt="CommonLife"
-              width={132}
-              height={16}
-              className="h-3.5 w-auto min-[1180px]:h-4 min-[1180px]:w-[132px]"
-            />
-          </Link>
-          <nav aria-label="Primary" className="flex items-center gap-9">
-            <ul className="hidden items-center gap-9 min-[1180px]:flex">
-              <li>
-                <Link className={capsLink} href={routes.about}>
-                  {nav.about}
-                </Link>
-              </li>
-              <li>
-                <Link className={capsLink} href={routes.contact}>
-                  {nav.contact}
-                </Link>
-              </li>
-            </ul>
-            <a
-              className={`${outlinePill} whitespace-nowrap px-3 py-2 text-[11px] tracking-[0.14em] min-[1180px]:px-5 min-[1180px]:py-[11px] min-[1180px]:text-[12px] min-[1180px]:tracking-[0.18em]`}
-              href={routes.app}
-              rel="noopener noreferrer"
-            >
-              {nav.demo}
-            </a>
-          </nav>
-        </div>
-      </header>
 
       <main>
         <section ref={heroRef} className="hero-track" aria-labelledby="hero-title">
@@ -233,7 +186,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
             <div className="hero-lockup px-6 pb-2 text-center">
               <h1
                 id="hero-title"
-                className="font-lora text-[40px] font-medium leading-[46px] tracking-[-0.01em] text-balance text-clWhite min-[1180px]:text-[72px] min-[1180px]:leading-[80px]"
+                className="font-lora text-[40px] font-medium leading-[46px] tracking-[-0.01em] text-balance text-clWhite min-[768px]:text-[56px] min-[768px]:leading-[64px] min-[1180px]:text-[72px] min-[1180px]:leading-[80px]"
               >
                 Faith meets
                 <br className="min-[1180px]:hidden" /> technology
@@ -249,7 +202,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
 
         <section ref={chaptersRef} className="chapters-track" aria-label="Chapters">
           <div className="chapters-sticky stage-pad flex-col">
-            <div className="chapter-layout px-6 min-[1180px]:px-0">
+            <div className="chapter-layout px-6 min-[768px]:px-10 min-[1180px]:px-0">
               <div className="chapter-copy">
                 {chapters.map((chapter, index) => (
                   <div
@@ -352,10 +305,10 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
           aria-label={statement.reference}
         >
           <div className="mx-auto max-w-[960px]">
-            <p className="statement-line font-lora text-[30px] leading-[38px] tracking-[-0.01em] text-clWhite min-[1180px]:text-[60px] min-[1180px]:leading-[72px]">
+            <p className="statement-line font-lora text-[30px] leading-[38px] tracking-[-0.01em] text-clWhite min-[768px]:text-[44px] min-[768px]:leading-[54px] min-[1180px]:text-[60px] min-[1180px]:leading-[72px]">
               {statement.lead}
             </p>
-            <blockquote className="statement-line font-lora m-0 text-[30px] italic leading-[38px] tracking-[-0.01em] text-clSky min-[1180px]:text-[60px] min-[1180px]:leading-[72px]">
+            <blockquote className="statement-line font-lora m-0 text-[30px] italic leading-[38px] tracking-[-0.01em] text-clSky min-[768px]:text-[44px] min-[768px]:leading-[54px] min-[1180px]:text-[60px] min-[1180px]:leading-[72px]">
               {statement.scripture}
             </blockquote>
             <p className="statement-line mt-8 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-clSky min-[1180px]:text-[12px]">
@@ -405,7 +358,7 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
         </section>
 
         <section className="bg-clDeepOcean px-6 pb-20 min-[1180px]:px-[120px] min-[1180px]:pb-[160px]">
-          <div className="mx-auto flex max-w-[1200px] flex-col gap-8 border border-clSky/30 p-6 min-[1180px]:flex-row min-[1180px]:items-center min-[1180px]:gap-24 min-[1180px]:p-20">
+          <div className="mx-auto flex max-w-[1200px] flex-col gap-8 border border-clSky/30 p-6 min-[768px]:p-10 min-[1280px]:flex-row min-[1280px]:items-center min-[1280px]:gap-24 min-[1280px]:p-20">
             <h2 className="font-lora text-[32px] leading-[40px] tracking-[-0.01em] text-clWhite min-[1180px]:w-[420px] min-[1180px]:shrink-0 min-[1180px]:text-[56px] min-[1180px]:leading-[64px]">
               {pilot.statement}
             </h2>
@@ -417,14 +370,10 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
                 {pilot.body}
               </p>
               <ul className="mt-6 flex list-none flex-col items-start gap-2.5 p-0 min-[1180px]:flex-row min-[1180px]:flex-wrap">
-                {pilot.ministries.map((label, index) => (
+                {pilot.ministries.map((label) => (
                   <li
                     key={label}
-                    className={
-                      index === 0
-                        ? "border border-clWhite bg-clWhite px-4 py-2.5 text-left text-[14px] font-semibold text-clDeepOcean"
-                        : "border border-clSky px-4 py-2.5 text-left text-[14px] font-medium text-clWhite"
-                    }
+                    className="border border-clSky px-4 py-2.5 text-left text-[14px] font-medium text-clWhite"
                   >
                     {label}
                   </li>
@@ -434,56 +383,6 @@ export default function HomeC({ fontVariable }: { fontVariable: string }) {
           </div>
         </section>
       </main>
-
-      <footer className="bg-clDeepOcean px-6 pb-14 min-[1180px]:px-[120px]">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="h-px w-full bg-clSky" />
-          <Link href={routes.home} className="mt-14 block max-w-[1000px] rounded-sm">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/homepage-c/logo-wordmark-footer-on-dark.svg"
-              alt="CommonLife"
-              width={1000}
-              height={120}
-              className="h-auto w-full"
-            />
-          </Link>
-          <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 min-[1180px]:flex min-[1180px]:gap-0">
-            <nav aria-label={footer.columnLabel} className="flex flex-col gap-3.5 min-[1180px]:w-[220px]">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-clSky">
-                {footer.columnLabel}
-              </p>
-              <Link className={textLink} href={routes.about}>
-                {footer.about}
-              </Link>
-              <Link className={textLink} href={routes.contact}>
-                {footer.contact}
-              </Link>
-            </nav>
-            <ul className="flex flex-col gap-3.5 pt-7 min-[1180px]:w-[220px]">
-              <li>
-                <a className={textLink} href={routes.app} rel="noopener noreferrer">
-                  {footer.app}
-                </a>
-              </li>
-            </ul>
-            <ul className="col-span-2 flex flex-col gap-3.5 min-[1180px]:w-[220px] min-[1180px]:pt-7">
-              <li>
-                <a className={textLink} href={routes.app} rel="noopener noreferrer">
-                  {footer.demo}
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="mt-14 h-px w-full bg-clSky" />
-          <div className="mt-8 flex flex-col gap-3 min-[1180px]:flex-row min-[1180px]:items-start min-[1180px]:justify-between">
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-clSky">{footer.legal}</p>
-            <p className="hidden text-[11px] font-medium uppercase tracking-[0.18em] text-clSky min-[1180px]:block">
-              {footer.tagline}
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

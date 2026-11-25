@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Cabin, Inter } from "next/font/google";
+import { Cabin, Inter, Lora } from "next/font/google";
+import SiteChrome from "@/components/site/Chrome";
 import "./globals.css";
 
 const cabin = Cabin({
@@ -12,6 +13,14 @@ const cabin = Cabin({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-lora",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,8 +42,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cabin.variable} ${inter.variable} font-body antialiased`}>
-        {children}
+      <body className={`${cabin.variable} ${inter.variable} ${lora.variable} font-body antialiased`}>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
