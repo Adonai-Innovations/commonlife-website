@@ -46,7 +46,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-[4px] border border-clDeepOcean/60 bg-clWhite p-8 min-[1180px]:p-12">
+      <div className="rounded-[4px] border border-clDeepOcean bg-clWhite p-8 min-[1180px]:p-12">
         <p className="font-lora text-[40px] font-bold leading-[48px] text-clDeepOcean min-[1180px]:text-[48px] min-[1180px]:leading-[58px]">
           Thank you!
         </p>
@@ -57,7 +57,7 @@ export default function ContactForm() {
   const invalid = (name: string) => fields.includes(name);
 
   return (
-    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-6 rounded-[4px] border border-clDeepOcean/60 bg-clWhite p-6 min-[768px]:p-8 min-[1180px]:p-12">
+    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-6 rounded-[4px] border border-clDeepOcean bg-clWhite p-6 min-[768px]:p-8 min-[1180px]:p-12">
       {status === "error" ? <FormAlert>{CONTACT_ERRORS.delivery}</FormAlert> : null}
       <div className="flex flex-col gap-5 min-[768px]:flex-row">
         <TextField id="contact-first" name="firstName" label="First Name" required autoComplete="given-name" error={invalid("firstName")} />

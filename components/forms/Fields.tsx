@@ -1,7 +1,9 @@
-export const inputClass =
-  "h-[52px] w-full rounded-[4px] border border-clDeepOcean/60 bg-clWhite pl-4 pr-3.5 font-inter text-base text-clDeepOcean focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clBlue";
+const inputBase =
+  "h-[52px] w-full rounded-[4px] bg-clWhite pl-4 pr-3.5 font-inter text-base text-clDeepOcean focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clBlue";
 
-export const inputErrorClass = "border-2 border-clAmber";
+export function fieldBorder(error?: boolean) {
+  return error ? "border-2 border-clAmber" : "border border-clDeepOcean/60";
+}
 
 export function RequiredMark({ error }: { error: boolean }) {
   return (
@@ -55,8 +57,8 @@ export function TextField({
         name={name}
         type={type}
         autoComplete={autoComplete}
-        aria-invalid={error || undefined}
-        className={`${inputClass} ${error ? inputErrorClass : ""}`}
+        aria-invalid={error ? true : undefined}
+        className={`${inputBase} ${fieldBorder(error)}`}
       />
     </div>
   );
@@ -82,8 +84,8 @@ export function TextAreaField({
         id={id}
         name={name}
         rows={4}
-        aria-invalid={error || undefined}
-        className={`${inputClass} h-[132px] resize-none py-3.5 ${error ? inputErrorClass : ""}`}
+        aria-invalid={error ? true : undefined}
+        className={`${inputBase} h-[132px] resize-none py-3.5 ${fieldBorder(error)}`}
       />
     </div>
   );
@@ -112,8 +114,8 @@ export function SelectField({
           id={id}
           name={name}
           defaultValue=""
-          aria-invalid={error || undefined}
-          className={`${inputClass} appearance-none pr-10 ${error ? inputErrorClass : ""}`}
+          aria-invalid={error ? true : undefined}
+          className={`${inputBase} appearance-none pr-10 ${fieldBorder(error)}`}
         >
           <option value="">Select an option</option>
           {options.map((option) => (
@@ -151,7 +153,7 @@ export function CheckGroup({
   error?: boolean;
 }) {
   return (
-    <fieldset className="flex flex-col gap-3">
+    <fieldset className="flex flex-col gap-3" aria-invalid={error ? true : undefined}>
       <legend className="flex flex-wrap gap-x-1.5 font-inter text-[15px] font-medium leading-[22px] text-clDeepOcean">
         <span>{legend}</span>
         {required ? <RequiredMark error={Boolean(error)} /> : null}
@@ -160,12 +162,22 @@ export function CheckGroup({
       <div className="flex flex-col gap-3">
         {options.map((option) => (
           <label key={option} className="flex items-start gap-3 font-inter text-base leading-6 text-clDeepOcean">
-            <input
-              type="checkbox"
-              name={name}
-              value={option}
-              className={`mt-0.5 size-5 shrink-0 rounded-[3px] border border-clDeepOcean/60 accent-clDeepOcean ${error ? "border-2 border-clAmber" : ""}`}
-            />
+            <span className="relative mt-0.5 inline-flex size-5 shrink-0">
+              <input
+                type="checkbox"
+                name={name}
+                value={option}
+                aria-invalid={error ? true : undefined}
+                className={`peer size-5 appearance-none rounded-[3px] bg-clWhite focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clBlue ${fieldBorder(error)}`}
+              />
+              <svg
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 hidden size-5 text-clDeepOcean peer-checked:block"
+              >
+                <path d="M3.5 8.5 L6.5 11.5 L12.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             <span>{option}</span>
           </label>
         ))}

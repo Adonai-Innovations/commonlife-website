@@ -18,13 +18,13 @@ export default function AboutPage() {
       <main>
         <section className="bg-clWhite">
           <div className={`${shell} flex flex-col gap-10 py-16 min-[1180px]:flex-row min-[1180px]:items-center min-[1180px]:gap-24 min-[1180px]:py-[120px]`}>
-            <div className="flex max-w-[600px] flex-col gap-7">
+            <div className="order-2 flex max-w-[600px] flex-col gap-7 min-[1180px]:order-1">
               <h1 className={h1Class}>Our Story</h1>
               <p className="font-lora text-[18px] leading-7 min-[768px]:text-[20px] min-[768px]:leading-8 min-[1180px]:text-[22px] min-[1180px]:leading-[34px]">
                 CommonLife, founded in 2024, makes biblically accurate wisdom accessible worldwide
               </p>
             </div>
-            <div className="relative h-[320px] w-full min-[768px]:h-[420px] min-[1180px]:h-[560px] min-[1180px]:flex-1">
+            <div className="relative order-1 h-[320px] w-full min-[768px]:h-[420px] min-[1180px]:order-2 min-[1180px]:h-[560px] min-[1180px]:flex-1">
               <Image
                 src="/homepage/photo-bibles-open-in-a-group-study-37313b0c.jpg"
                 alt="Bibles open in a group study"

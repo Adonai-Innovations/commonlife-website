@@ -1,7 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { focusRing, shell } from "@/lib/chrome";
+
+export const metadata: Metadata = {
+  title: "We couldn’t find the page you were looking for. — CommonLife",
+  description: "We couldn’t find the page you were looking for.",
+};
+
+const reasons = [
+  "There is an error in the URL entered into your web browser. Please check the URL and try again.",
+  "The page you are looking for has been moved or deleted.",
+];
 
 export default function NotFound() {
   return (
@@ -14,10 +25,13 @@ export default function NotFound() {
               We couldn’t find the page you were looking for.
             </h1>
             <p className="font-inter text-[17px] leading-7">This is either because:</p>
-            <ul className="list-disc space-y-3 pl-5 font-inter text-[17px] leading-7">
-              <li>There is an error in the URL entered into your web browser. Please check the URL and try again.</li>
-              <li>The page you are looking for has been moved or deleted.</li>
-            </ul>
+            <div>
+              {reasons.map((reason) => (
+                <p key={reason} className="border-t border-clDeepOcean py-4 font-inter text-[17px] leading-7">
+                  {reason}
+                </p>
+              ))}
+            </div>
             <p className="font-inter text-[17px] leading-7">
               You can return to our homepage by{" "}
               <Link href="/" className={`text-clBlue underline underline-offset-4 ${focusRing}`}>

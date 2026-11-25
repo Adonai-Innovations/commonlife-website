@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { CONTACT_ERRORS } from "@/lib/contact-fields";
 import { CHALLENGE_OPTIONS, CHURCH_SIZES, SERVICE_OPTIONS, START_OPTIONS } from "@/lib/form-schemas";
@@ -51,7 +52,7 @@ export default function PilotApplicationForm() {
 
   if (status === "sent") {
     return (
-      <div className="flex flex-col gap-4 rounded-[4px] border border-clDeepOcean/60 bg-clWhite p-8 min-[1180px]:p-12">
+      <div className="flex flex-col gap-4 rounded-[4px] border border-clDeepOcean bg-clWhite p-8 min-[1180px]:p-12">
         {/* eslint-disable-next-line @next/next/no-img-element -- success icon */}
         <img src="/homepage/icon-circle-check.svg" alt="" width={28} height={28} />
         <p className="font-lora text-[30px] font-bold leading-[38px] text-clDeepOcean min-[1180px]:text-[40px] min-[1180px]:leading-[48px]">
@@ -60,6 +61,14 @@ export default function PilotApplicationForm() {
         <p className="font-inter text-[17px] leading-7 text-clDeepOcean">
           A member of the CommonLife team will review your submission and reach out shortly to discuss next steps and confirm fit for the pilot.
         </p>
+        <Link
+          href="/about"
+          className="inline-flex w-fit items-center gap-2 py-2 font-inter text-base font-semibold text-clBlue hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clBlue"
+        >
+          About CommonLife
+          {/* eslint-disable-next-line @next/next/no-img-element -- decorative arrow */}
+          <img src="/homepage/icon-arrow-right.svg" alt="" width={18} height={18} />
+        </Link>
       </div>
     );
   }
@@ -67,7 +76,7 @@ export default function PilotApplicationForm() {
   const invalid = (name: string) => fields.includes(name);
 
   return (
-    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-6 rounded-[4px] border border-clDeepOcean/60 bg-clWhite p-6 min-[768px]:p-8 min-[1180px]:p-12">
+    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-6 rounded-[4px] border border-clDeepOcean bg-clWhite p-6 min-[768px]:p-8 min-[1180px]:p-12">
       {status === "error" ? <FormAlert>{CONTACT_ERRORS.invalid}</FormAlert> : null}
       <div className="flex flex-col gap-5 min-[768px]:flex-row">
         <TextField id="pilot-first" name="firstName" label="First Name" required autoComplete="given-name" error={invalid("firstName")} />
@@ -75,8 +84,10 @@ export default function PilotApplicationForm() {
       </div>
       <TextField id="pilot-email" name="email" label="Email" type="email" required autoComplete="email" error={invalid("email")} />
       <TextField id="pilot-phone" name="phone" label="Phone" type="tel" autoComplete="tel" />
-      <TextField id="pilot-role" name="role" label="Your Role" required error={invalid("role")} />
-      <TextField id="pilot-church" name="churchName" label="Church Name" required error={invalid("churchName")} />
+      <div className="flex flex-col gap-5 min-[768px]:flex-row">
+        <TextField id="pilot-role" name="role" label="Your Role" required error={invalid("role")} />
+        <TextField id="pilot-church" name="churchName" label="Church Name" required error={invalid("churchName")} />
+      </div>
       <SelectField id="pilot-size" name="churchSize" label="Church Size" options={CHURCH_SIZES} />
       <CheckGroup
         legend="Which of these challenges are most relevant right now?"
