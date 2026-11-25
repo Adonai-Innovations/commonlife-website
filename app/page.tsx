@@ -136,7 +136,7 @@ export default function HomePage() {
             </div>
             <h1
               id="hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl leading-tight mb-8"
+              className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl leading-tight md:leading-none mb-8"
             >
               Where Faith and Understanding Meet Clarity
             </h1>
@@ -147,7 +147,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold text-base hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold text-base hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
               >
                 Schedule a Demo
               </Link>
@@ -315,7 +315,7 @@ export default function HomePage() {
             <div className="text-center mt-12">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-brand-navy focus-visible:outline-offset-2"
+                className="inline-flex items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-brand-navy focus-visible:outline-offset-2"
               >
                 Schedule a Demo →
               </Link>
@@ -345,7 +345,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+                className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
               >
                 Schedule a Demo
               </Link>

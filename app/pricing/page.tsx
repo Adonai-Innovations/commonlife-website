@@ -101,7 +101,7 @@ export default function PricingPage() {
             </p>
             <h1
               id="pricing-hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl leading-tight mb-6"
+              className="font-heading font-bold text-4xl md:text-6xl leading-tight md:leading-none mb-6"
             >
               Simple, Faithful Pricing
             </h1>
@@ -180,7 +180,7 @@ export default function PricingPage() {
                         }`}
                       >
                         <span
-                          className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs mt-0.5 ${
+                          className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs mt-0.5 ${
                             tier.highlighted
                               ? "bg-brand-berry/30 text-white"
                               : "bg-brand-berry/20 text-brand-berry"
@@ -198,7 +198,7 @@ export default function PricingPage() {
                     href="/contact"
                     className={`inline-flex justify-center items-center px-6 py-3.5 rounded font-heading font-semibold text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${
                       tier.highlighted
-                        ? "bg-brand-berry text-white hover:bg-opacity-90 focus-visible:outline-white"
+                        ? "bg-brand-berry text-white hover:bg-brand-berry/90 focus-visible:outline-white"
                         : "bg-brand-navy text-white hover:bg-brand-navyDark focus-visible:outline-brand-navy"
                     }`}
                   >
@@ -260,7 +260,7 @@ export default function PricingPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+              className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
             >
               Schedule a Demo
             </Link>
