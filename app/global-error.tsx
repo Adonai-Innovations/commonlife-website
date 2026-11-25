@@ -10,8 +10,8 @@ export default function GlobalError({ reset }: { error: Error & { digest?: strin
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#F4F6FB",
-          color: "#101832",
+          background: "#062F45",
+          color: "#FFFFFF",
           fontFamily: "Arial, sans-serif",
           padding: "24px",
           textAlign: "center",
@@ -19,17 +19,17 @@ export default function GlobalError({ reset }: { error: Error & { digest?: strin
       >
         <main>
           <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Something went wrong</h1>
-          <p style={{ marginBottom: "1.5rem" }}>
-            Please refresh the page. If this keeps happening, email hello@commonlife.ai.
+          <p style={{ marginBottom: "1.5rem", color: "#8EB5DB" }}>
+            Please try again. If this keeps happening, email hello@commonlife.ai.
           </p>
           <button
             type="button"
             onClick={() => reset()}
             style={{
-              background: "#4A6CD4",
-              color: "#fff",
-              border: 0,
-              borderRadius: "4px",
+              background: "#FFFFFF",
+              color: "#062F45",
+              border: "1.5px solid #FFFFFF",
+              borderRadius: 0,
               padding: "12px 24px",
               fontWeight: 600,
             }}
