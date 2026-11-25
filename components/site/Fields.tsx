@@ -45,11 +45,17 @@ export function TextInput({
   error?: boolean;
   type?: string;
 }) {
-  return <input className={textClass(error)} name={name} type={type} autoComplete="on" />;
+  return <input className={textClass(error)} name={name} type={type} autoComplete="on" aria-invalid={error || undefined} />;
 }
 
-export function TextArea({ name }: { name: string }) {
-  return <textarea className={`${control} min-h-[140px] border border-clSky py-3`} name={name} />;
+export function TextArea({ name, error }: { name: string; error?: boolean }) {
+  return (
+    <textarea
+      className={`${control} min-h-[140px] py-3 ${error ? "border-2 border-clWhite" : "border border-clSky"}`}
+      name={name}
+      aria-invalid={error || undefined}
+    />
+  );
 }
 
 export function SelectField({
@@ -63,7 +69,7 @@ export function SelectField({
 }) {
   return (
     <span className="relative block">
-      <select className={`${textClass(error)} appearance-none pr-10`} name={name} defaultValue="">
+      <select className={`${textClass(error)} appearance-none pr-10`} name={name} defaultValue="" aria-invalid={error || undefined}>
         <option value="">Select an option</option>
         {options.map((option) => (
           <option key={option} value={option}>
@@ -81,7 +87,7 @@ export function SelectField({
 export function CheckOption({ label, name, error }: { label: string; name: string; error?: boolean }) {
   return (
     <label className="flex items-start gap-3 text-[16px] leading-6 text-clWhite">
-      <input className="peer sr-only" type="checkbox" name={name} value={label} />
+      <input className="peer sr-only" type="checkbox" name={name} value={label} aria-invalid={error || undefined} />
       <span
         className={`mt-0.5 inline-flex size-5 shrink-0 bg-clOceanCard peer-checked:bg-clWhite ${error ? "border-2 border-clWhite" : "border border-clSky"}`}
       />
@@ -108,7 +114,7 @@ export function SubmitButton({ label, pending }: { label: string; pending: boole
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex items-center rounded-full bg-clBlue px-7 py-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-clWhite disabled:opacity-60"
+      className="inline-flex w-fit items-center self-start rounded-full bg-clBlue px-7 py-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-clWhite disabled:opacity-60"
     >
       {label}
     </button>

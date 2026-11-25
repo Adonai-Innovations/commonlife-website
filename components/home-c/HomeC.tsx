@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
@@ -379,6 +380,12 @@ export default function HomeC() {
                   </li>
                 ))}
               </ul>
+              <Link
+                className="mt-8 inline-flex rounded-full bg-clBlue px-7 py-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-clWhite"
+                href="/pilot-application"
+              >
+                Apply for the Pilot
+              </Link>
             </div>
           </div>
         </section>
