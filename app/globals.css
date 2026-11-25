@@ -1,6 +1,17 @@
 @import "tailwindcss";
 @config "../tailwind.config.mjs";
 
+@theme {
+  --color-clDeepOcean: #062f45;
+  --color-clOceanCard: #093a56;
+  --color-clOcean: #0b4a6b;
+  --color-clBlue: #1370af;
+  --color-clSky: #8eb5db;
+  --color-clWhite: #ffffff;
+  --color-clPaper: #f5f7f9;
+  --color-clAmber: #9e5a10;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #101832;
