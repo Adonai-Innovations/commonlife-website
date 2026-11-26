@@ -16,6 +16,31 @@ import {
   parsePilot,
 } from "@/lib/horizon-forms";
 
+const PILOT_FOCUS = [
+  "firstName",
+  "lastName",
+  "email",
+  "phone",
+  "role",
+  "churchName",
+  "churchSize",
+  "challenges",
+  "improve",
+  "services",
+  "startWhen",
+  "anythingElse",
+] as const;
+
+const CONTACT_FOCUS = ["firstName", "lastName", "email", "organization", "message", "timeline"] as const;
+
+function focusFirstInvalid(order: readonly string[], invalid: string[]) {
+  const name = order.find((item) => invalid.includes(item));
+  if (!name) return;
+  window.requestAnimationFrame(() => {
+    document.querySelector<HTMLElement>(`[name="${name}"]`)?.focus();
+  });
+}
+
 function Alert({ message }: { message: string }) {
   return (
     <div className="form-alert" role="alert">
@@ -80,6 +105,7 @@ export function PilotForm() {
     if (!parsed.ok) {
       setFields(parsed.fields);
       setAlert(FORM_CHECK);
+      focusFirstInvalid(PILOT_FOCUS, parsed.fields);
       return;
     }
     setPending(true);
@@ -91,8 +117,10 @@ export function PilotForm() {
         setFields([]);
         return;
       }
-      setFields(data?.fields ?? []);
+      const invalid = data?.fields ?? [];
+      setFields(invalid);
       setAlert(data?.error || FORM_CHECK);
+      focusFirstInvalid(PILOT_FOCUS, invalid);
     } catch {
       setAlert(FORM_CHECK);
     } finally {
@@ -190,6 +218,7 @@ export function ContactForm({ initial = "form" }: { initial?: "form" | "delivery
       setFields(parsed.fields);
       setAlert(FORM_CHECK);
       setDone(false);
+      focusFirstInvalid(CONTACT_FOCUS, parsed.fields);
       return;
     }
     setPending(true);
@@ -201,9 +230,11 @@ export function ContactForm({ initial = "form" }: { initial?: "form" | "delivery
         setFields([]);
         return;
       }
+      const invalid = data?.error === DELIVERY_ERROR ? [] : (data?.fields ?? []);
       setDone(false);
-      setFields(data?.error === DELIVERY_ERROR ? [] : (data?.fields ?? []));
+      setFields(invalid);
       setAlert(data?.error || FORM_CHECK);
+      focusFirstInvalid(CONTACT_FOCUS, invalid);
     } catch {
       setAlert(FORM_CHECK);
     } finally {

@@ -9,16 +9,16 @@
   --cl-white: #ffffff;
   --cl-paper: #f5f7f9;
   --cl-amber: #9e5a10;
-  --scrim-side: 0.88;
-  --scrim-v0: 0.84;
-  --scrim-v20: 0.72;
-  --scrim-v30: 0.66;
-  --scrim-v62: 0.92;
-  --scrim-v100: 0.98;
-  --scrim-m0: 0.86;
-  --scrim-m18: 0.74;
-  --scrim-m42: 0.92;
-  --scrim-m100: 0.98;
+  --scrim-side: 0.8;
+  --scrim-v0: 0.6;
+  --scrim-v20: 0;
+  --scrim-v30: 0.05;
+  --scrim-v62: 0.8;
+  --scrim-v100: 0.96;
+  --scrim-m0: 0.6;
+  --scrim-m18: 0.05;
+  --scrim-m42: 0.82;
+  --scrim-m100: 0.97;
 }
 
 .horizon {
@@ -27,6 +27,8 @@
   font-family: var(--font-inter), Inter, sans-serif;
   font-weight: 400;
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
   color-scheme: dark;
 }
 
@@ -450,6 +452,23 @@
   transition: background-color 200ms ease;
 }
 
+.site-header--overlay::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(6, 47, 69, 0.55) 0%, rgba(6, 47, 69, 0.2) 100%);
+}
+
+.site-header--overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
 .site-header--overlay[data-solid="true"] {
   background: var(--cl-deep-ocean);
 }
@@ -698,10 +717,10 @@
   inset: 0;
   background-image: linear-gradient(
     180deg,
-    rgba(6, 47, 69, var(--scrim-m0)) 0%,
-    rgba(6, 47, 69, var(--scrim-m18)) 18%,
-    rgba(6, 47, 69, var(--scrim-m42)) 46%,
-    rgba(6, 47, 69, var(--scrim-m100)) 100%
+    rgba(6, 47, 69, 0.6) 0%,
+    rgba(6, 47, 69, 0.05) 18%,
+    rgba(6, 47, 69, 0.82) 42%,
+    rgba(6, 47, 69, 0.97) 100%
   );
 }
 
@@ -713,6 +732,19 @@
   gap: 20px;
   width: 100%;
   max-width: 100%;
+}
+
+/* Dark #062F45 only behind the copy. The fade sits above the type so the photo band stays clear. */
+.full-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  left: -100vw;
+  right: -100vw;
+  top: -88px;
+  bottom: -56px;
+  background: linear-gradient(180deg, rgba(6, 47, 69, 0) 0, rgba(6, 47, 69, 0.45) 36px, rgba(6, 47, 69, 0.9) 88px, rgba(6, 47, 69, 0.96) 100%);
 }
 
 .solid {
@@ -776,6 +808,13 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.context-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
 }
 
 .sheets,
@@ -871,12 +910,15 @@
 .phone-wrap {
   display: flex;
   justify-content: center;
+  flex: 0 0 auto;
+  max-width: 100%;
 }
 
 .phone {
   position: relative;
-  width: 240px;
-  height: 507px;
+  width: min(240px, 100%);
+  height: auto;
+  aspect-ratio: 240 / 507;
   border: 6px solid var(--cl-ocean-card);
   border-radius: 31px;
   overflow: hidden;
@@ -1193,6 +1235,9 @@ select.control.is-set {
   .full-copy {
     gap: 24px;
   }
+  .full-copy::before {
+    bottom: -88px;
+  }
   .solid {
     padding: 128px 40px;
   }
@@ -1233,32 +1278,30 @@ select.control.is-set {
   }
   .scrim {
     background-image:
-      linear-gradient(
-        90deg,
-        rgba(6, 47, 69, var(--scrim-side)) 0%,
-        rgba(6, 47, 69, 0.55) 68%,
-        rgba(6, 47, 69, 0.28) 100%
-      ),
+      linear-gradient(90deg, rgba(6, 47, 69, 0.8) 0%, rgba(6, 47, 69, 0) 60%),
       linear-gradient(
         180deg,
-        rgba(6, 47, 69, var(--scrim-v0)) 0%,
-        rgba(6, 47, 69, var(--scrim-v20)) 14%,
-        rgba(6, 47, 69, var(--scrim-v30)) 36%,
-        rgba(6, 47, 69, var(--scrim-v62)) 62%,
-        rgba(6, 47, 69, var(--scrim-v100)) 100%
+        rgba(6, 47, 69, 0.6) 0%,
+        rgba(6, 47, 69, 0) 20%,
+        rgba(6, 47, 69, 0.05) 30%,
+        rgba(6, 47, 69, 0.8) 62%,
+        rgba(6, 47, 69, 0.96) 100%
       );
   }
   .scrim[data-side="right"] {
     background-image:
-      linear-gradient(90deg, rgba(6, 47, 69, 0.28) 0%, rgba(6, 47, 69, 0.55) 32%, rgba(6, 47, 69, var(--scrim-side)) 100%),
+      linear-gradient(90deg, rgba(6, 47, 69, 0) 40%, rgba(6, 47, 69, 0.8) 100%),
       linear-gradient(
         180deg,
-        rgba(6, 47, 69, var(--scrim-v0)) 0%,
-        rgba(6, 47, 69, var(--scrim-v20)) 14%,
-        rgba(6, 47, 69, var(--scrim-v30)) 36%,
-        rgba(6, 47, 69, var(--scrim-v62)) 62%,
-        rgba(6, 47, 69, var(--scrim-v100)) 100%
+        rgba(6, 47, 69, 0.6) 0%,
+        rgba(6, 47, 69, 0) 20%,
+        rgba(6, 47, 69, 0.05) 30%,
+        rgba(6, 47, 69, 0.8) 62%,
+        rgba(6, 47, 69, 0.96) 100%
       );
+  }
+  .full-copy::before {
+    bottom: -104px;
   }
   .solid {
     padding: 160px 56px;
@@ -1276,10 +1319,21 @@ select.control.is-set {
   }
   .platform {
     align-items: center;
+    min-width: 0;
+    width: 100%;
   }
   .platform-copy {
-    width: 820px;
-    flex: none;
+    flex: 1 1 auto;
+    width: auto;
+    max-width: 820px;
+    min-width: 0;
+  }
+  .phone {
+    width: 330px;
+    aspect-ratio: 330 / 698;
+    height: auto;
+    border-width: 8px;
+    border-radius: 43px;
   }
   .story-lede,
   .solution-copy {
@@ -1287,8 +1341,9 @@ select.control.is-set {
     flex: none;
   }
   .context-copy {
-    width: 600px;
-    flex: none;
+    width: min(600px, 100%);
+    flex: 1 1 600px;
+    min-width: 0;
   }
   .sheets {
     flex-direction: row;
@@ -1331,12 +1386,6 @@ select.control.is-set {
   }
   .bio-col {
     flex: 1;
-  }
-  .phone {
-    width: 330px;
-    height: 698px;
-    border-width: 8px;
-    border-radius: 43px;
   }
   .stack {
     gap: 56px;
