@@ -65,19 +65,19 @@ export default function PilotForm({ preview }: { preview?: "error" | "submitted"
   }
 
   return (
-    <div className="flex flex-col gap-7 min-[1180px]:flex-row min-[1180px]:items-start min-[1180px]:gap-12">
-      <div className="flex flex-col gap-6 px-2 pt-5 text-cl-deep-ocean min-[1180px]:w-[440px] min-[1180px]:shrink-0 min-[1180px]:pl-6 min-[1180px]:pt-14">
-        <h1 className="font-lora text-[36px] leading-[42px] tracking-[-0.72px] md:text-[48px] md:leading-[56px] min-[1180px]:text-[56px] min-[1180px]:leading-[64px] min-[1180px]:tracking-[-1.12px]">
+    <div className="flex flex-col gap-7 desktop:flex-row desktop:items-start desktop:gap-12">
+      <div className="flex flex-col gap-6 px-2 pt-5 text-cl-deep-ocean desktop:w-[440px] desktop:shrink-0 desktop:pl-6 desktop:pt-14">
+        <h1 className="font-lora text-[36px] leading-[42px] tracking-[-0.72px] md:text-[48px] md:leading-[56px] desktop:text-[56px] desktop:leading-[64px] desktop:tracking-[-1.12px]">
           Apply to Become a <em className="italic">Pilot Church</em>
         </h1>
-        <p className="font-inter text-base leading-[26px] min-[1180px]:text-[17px] min-[1180px]:leading-7">
+        <p className="font-inter text-base leading-[26px] desktop:text-[17px] desktop:leading-7">
           We’re working with a limited number of churches for the pilot. This short application helps us understand your church, your current challenges, and which level of support would be the best fit.
         </p>
         <p className="font-inter text-base font-semibold leading-[26px]">
           No obligation, and no strings attached! Most applications take less than 2 minutes to complete.
         </p>
       </div>
-      <div className="flex min-w-0 flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-5 py-7 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px]">
+      <div className="flex min-w-0 flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-5 py-7 md:rounded-[28px] md:p-12 desktop:rounded-[32px]">
         {phase === "submitted" ? (
           <>
             <DoneBadge />

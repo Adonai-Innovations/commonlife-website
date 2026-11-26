@@ -12,7 +12,7 @@ const links = [
 export default function Footer() {
   return (
     <footer className="bg-cl-paper">
-      <div className="hidden flex-col gap-6 px-12 pb-10 pt-6 min-[1180px]:flex">
+      <div className="hidden flex-col gap-6 px-12 pb-10 pt-6 desktop:flex">
         <div className="h-px w-full bg-cl-deep-ocean" />
         <div className="flex items-center justify-between gap-6">
           <nav aria-label="Footer" className="flex gap-7">
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 px-6 pb-9 pt-6 min-[1180px]:hidden">
+      <div className="flex flex-col gap-5 px-6 pb-9 pt-6 desktop:hidden">
         <div className="h-px w-full bg-cl-deep-ocean" />
         <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-3">
           {links.map((link) => (

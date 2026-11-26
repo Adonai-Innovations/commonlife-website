@@ -8,7 +8,7 @@ export default function SiteShell({ children, padded = true }: { children: React
     <div className="min-h-screen bg-cl-paper text-cl-deep-ocean">
       <Header />
       {padded ? (
-        <main className="flex flex-col gap-3 px-3 pb-6 pt-1 md:gap-4 md:px-6 md:pb-8 md:pt-2 min-[1180px]:gap-6 min-[1180px]:px-12 min-[1180px]:pb-12 min-[1180px]:pt-2">
+        <main className="flex flex-col gap-3 px-3 pb-6 pt-1 md:gap-4 md:px-6 md:pb-8 md:pt-2 desktop:gap-6 desktop:px-12 desktop:pb-12 desktop:pt-2">
           {children}
         </main>
       ) : (

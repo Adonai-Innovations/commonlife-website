@@ -35,13 +35,13 @@ const bio = [
 export default function PilotPage() {
   return (
     <SiteShell>
-      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px] min-[1180px]:px-[72px] min-[1180px]:py-16">
-        <div className="flex flex-col gap-8 min-[1180px]:flex-row min-[1180px]:items-center min-[1180px]:gap-20">
-          <div className="flex flex-col gap-8 min-[1180px]:w-[620px] min-[1180px]:shrink-0">
-            <h1 className="font-lora text-[42px] leading-[48px] tracking-[-0.02em] md:text-[60px] md:leading-[68px] min-[1180px]:text-[80px] min-[1180px]:leading-[88px]">
+      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
+        <div className="flex flex-col gap-8 desktop:flex-row desktop:items-center desktop:gap-20">
+          <div className="flex flex-col gap-8 desktop:w-[620px] desktop:shrink-0">
+            <h1 className="font-lora text-[42px] leading-[48px] tracking-[-0.02em] md:text-[60px] md:leading-[68px] desktop:text-[80px] desktop:leading-[88px]">
               The CommonLife <em className="italic">Solution</em>
             </h1>
-            <p className="font-inter text-[17px] leading-7 md:text-[19px] md:leading-[30px] min-[1180px]:text-[20px] min-[1180px]:leading-8">
+            <p className="font-inter text-[17px] leading-7 md:text-[19px] md:leading-[30px] desktop:text-[20px] desktop:leading-8">
               Members of your congregation are increasingly asking AI systems questions that historically would have been directed toward pastors, mentors, or church leadership.
             </p>
             <div className="flex flex-col gap-3 md:flex-row">
@@ -53,26 +53,26 @@ export default function PilotPage() {
               </ButtonLink>
             </div>
           </div>
-          <div className="flex h-[360px] flex-1 items-end justify-center overflow-hidden rounded-2xl bg-cl-paper pt-8 md:h-[440px] md:rounded-[20px] min-[1180px]:h-[560px] min-[1180px]:rounded-3xl min-[1180px]:pt-12">
+          <div className="flex h-[360px] flex-1 items-end justify-center overflow-hidden rounded-2xl bg-cl-paper pt-8 md:h-[440px] md:rounded-[20px] desktop:h-[560px] desktop:rounded-3xl desktop:pt-12">
             <PhoneFrame
               src="/d/app-grace.jpg"
               alt="CommonLife app"
-              className="h-[420px] w-[200px] rounded-[28px] border-[6px] min-[1180px]:h-[550px] min-[1180px]:w-[260px] min-[1180px]:rounded-[34px] min-[1180px]:border-[7px]"
+              className="h-[420px] w-[200px] rounded-[28px] border-[6px] desktop:h-[550px] desktop:w-[260px] desktop:rounded-[34px] desktop:border-[7px]"
             />
           </div>
         </div>
       </section>
 
-      <div className="flex flex-col gap-3 md:gap-4 min-[1180px]:flex-row min-[1180px]:gap-6">
-        <article className="flex flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-6 py-8 md:gap-8 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px] min-[1180px]:px-[72px] min-[1180px]:py-16">
-          <h2 className="font-lora text-2xl font-semibold leading-8 tracking-[-0.12px] md:text-[28px] md:leading-9 min-[1180px]:text-[30px] min-[1180px]:leading-[38px] min-[1180px]:tracking-[-0.15px]">
+      <div className="flex flex-col gap-3 md:gap-4 desktop:flex-row desktop:gap-6">
+        <article className="flex flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-6 py-8 md:gap-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
+          <h2 className="font-lora text-2xl font-semibold leading-8 tracking-[-0.12px] md:text-[28px] md:leading-9 desktop:text-[30px] desktop:leading-[38px] desktop:tracking-[-0.15px]">
             Artificial intelligence is already shaping how people seek answers about faith, morality, relationships, and suffering.
           </h2>
-          <p className="font-inter text-base leading-[26px] min-[1180px]:text-[17px] min-[1180px]:leading-7">
+          <p className="font-inter text-base leading-[26px] desktop:text-[17px] desktop:leading-7">
             At the same time, members are asking more questions than ever — and increasingly turning to external tools to get answers.
           </p>
         </article>
-        <article className="flex flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-6 py-8 md:gap-8 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px] min-[1180px]:px-[72px] min-[1180px]:py-16">
+        <article className="flex flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-6 py-8 md:gap-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
           <p className="font-inter text-[17px] font-semibold leading-[26px]">
             At the same time, most senior and executive pastors are already managing:
           </p>
@@ -86,31 +86,31 @@ export default function PilotPage() {
         </article>
       </div>
 
-      <section className="flex flex-col gap-6 rounded-3xl bg-cl-deep-ocean px-6 py-8 md:gap-7 md:rounded-[28px] md:p-12 min-[1180px]:gap-8 min-[1180px]:rounded-[32px] min-[1180px]:px-[72px] min-[1180px]:py-16">
+      <section className="flex flex-col gap-6 rounded-3xl bg-cl-deep-ocean px-6 py-8 md:gap-7 md:rounded-[28px] md:p-12 desktop:gap-8 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
         <p className="font-inter text-[17px] font-semibold leading-[26px] text-cl-sky">The result is a growing gap:</p>
-        <p className="font-lora text-[40px] leading-[48px] tracking-[-0.6px] text-cl-white md:text-[52px] md:leading-[60px] min-[1180px]:text-[64px] min-[1180px]:leading-[72px] min-[1180px]:tracking-[-0.96px]">
+        <p className="font-lora text-[40px] leading-[48px] tracking-[-0.6px] text-cl-white md:text-[52px] md:leading-[60px] desktop:text-[64px] desktop:leading-[72px] desktop:tracking-[-0.96px]">
           More demand for guidance
         </p>
-        <p className="font-lora text-[40px] leading-[48px] tracking-[-0.6px] text-cl-white md:text-[52px] md:leading-[60px] min-[1180px]:text-[64px] min-[1180px]:leading-[72px] min-[1180px]:tracking-[-0.96px]">
+        <p className="font-lora text-[40px] leading-[48px] tracking-[-0.6px] text-cl-white md:text-[52px] md:leading-[60px] desktop:text-[64px] desktop:leading-[72px] desktop:tracking-[-0.96px]">
           Less available pastoral capacity
         </p>
-        <div className="flex flex-col gap-6 min-[1180px]:flex-row min-[1180px]:gap-20">
-          <p className="font-inter text-base leading-[26px] text-cl-sky min-[1180px]:w-[560px] min-[1180px]:shrink-0 min-[1180px]:text-[17px] min-[1180px]:leading-7">
+        <div className="flex flex-col gap-6 desktop:flex-row desktop:gap-20">
+          <p className="font-inter text-base leading-[26px] text-cl-sky desktop:w-[560px] desktop:shrink-0 desktop:text-[17px] desktop:leading-7">
             Hiring additional staff is expensive and time consuming, and scaling pastoral care manually may not be sustainable.
           </p>
-          <p className="font-lora text-[24px] italic leading-8 text-cl-white min-[1180px]:text-[28px] min-[1180px]:leading-9">
+          <p className="font-lora text-[24px] italic leading-8 text-cl-white desktop:text-[28px] desktop:leading-9">
             CommonLife solves this problem.
           </p>
         </div>
       </section>
 
-      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px] min-[1180px]:px-[72px] min-[1180px]:py-16">
-        <div className="flex flex-col gap-8 min-[1180px]:flex-row min-[1180px]:gap-20">
-          <div className="flex flex-col gap-6 min-[1180px]:w-[520px] min-[1180px]:shrink-0">
-            <h2 className="font-lora text-2xl font-semibold leading-8 tracking-[-0.12px] md:text-[28px] md:leading-9 min-[1180px]:text-[30px] min-[1180px]:leading-[38px] min-[1180px]:tracking-[-0.15px]">
+      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
+        <div className="flex flex-col gap-8 desktop:flex-row desktop:gap-20">
+          <div className="flex flex-col gap-6 desktop:w-[520px] desktop:shrink-0">
+            <h2 className="font-lora text-2xl font-semibold leading-8 tracking-[-0.12px] md:text-[28px] md:leading-9 desktop:text-[30px] desktop:leading-[38px] desktop:tracking-[-0.15px]">
               CommonLife helps churches address this challenge by introducing a new layer of support.
             </h2>
-            <p className="font-inter text-[17px] leading-7 md:text-[19px] md:leading-8 min-[1180px]:text-xl min-[1180px]:leading-8">
+            <p className="font-inter text-[17px] leading-7 md:text-[19px] md:leading-8 desktop:text-xl desktop:leading-8">
               This is not about replacing pastoral leadership. It is about extending it without increasing staff or workload.
             </p>
           </div>
@@ -128,15 +128,15 @@ export default function PilotPage() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-6 rounded-3xl bg-cl-deep-ocean px-6 py-8 md:gap-8 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px] min-[1180px]:px-[72px] min-[1180px]:py-16">
-        <h2 className="font-lora text-2xl font-semibold leading-8 tracking-[-0.12px] text-cl-white md:text-[28px] md:leading-9 min-[1180px]:text-[30px] min-[1180px]:leading-[38px]">
+      <section className="flex flex-col gap-6 rounded-3xl bg-cl-deep-ocean px-6 py-8 md:gap-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
+        <h2 className="font-lora text-2xl font-semibold leading-8 tracking-[-0.12px] text-cl-white md:text-[28px] md:leading-9 desktop:text-[30px] desktop:leading-[38px]">
           Trusted by Church Leaders
         </h2>
-        <blockquote className="max-w-[1040px] font-lora text-[26px] italic leading-9 text-cl-white md:text-[28px] md:leading-10 min-[1180px]:text-[32px] min-[1180px]:leading-[46px]">
+        <blockquote className="max-w-[1040px] font-lora text-[26px] italic leading-9 text-cl-white md:text-[28px] md:leading-10 desktop:text-[32px] desktop:leading-[46px]">
           “Most pastors don’t need more tools — they need ways to lead and care at scale. CommonLife helps address that in a way that’s actually usable.”
         </blockquote>
         <p className="font-inter text-[17px] font-semibold text-cl-white">Russ Olmon</p>
-        <div className="flex flex-col gap-4 min-[1180px]:flex-row min-[1180px]:gap-6">
+        <div className="flex flex-col gap-4 desktop:flex-row desktop:gap-6">
           {bio.map((paragraph) => (
             <p key={paragraph.slice(0, 24)} className="flex-1 rounded-[20px] bg-cl-ocean-card p-6 font-inter text-[15px] leading-6 text-cl-white">
               {paragraph}

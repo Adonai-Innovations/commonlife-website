@@ -62,16 +62,16 @@ export default function ContactForm({ preview }: { preview?: "error" | "sent" })
   }
 
   return (
-    <div className="flex flex-col gap-7 min-[1180px]:flex-row min-[1180px]:items-start min-[1180px]:gap-12">
-      <div className="flex flex-col gap-6 px-2 pt-5 min-[1180px]:w-[440px] min-[1180px]:shrink-0 min-[1180px]:pl-6 min-[1180px]:pt-14">
-        <h1 className="font-lora text-[40px] leading-[46px] tracking-[-0.8px] md:text-[52px] md:leading-[60px] min-[1180px]:text-[64px] min-[1180px]:leading-[72px] min-[1180px]:tracking-[-1.28px]">
+    <div className="flex flex-col gap-7 desktop:flex-row desktop:items-start desktop:gap-12">
+      <div className="flex flex-col gap-6 px-2 pt-5 desktop:w-[440px] desktop:shrink-0 desktop:pl-6 desktop:pt-14">
+        <h1 className="font-lora text-[40px] leading-[46px] tracking-[-0.8px] md:text-[52px] md:leading-[60px] desktop:text-[64px] desktop:leading-[72px] desktop:tracking-[-1.28px]">
           Connect With Us!
         </h1>
         <ButtonLink href="/commonlife-pilot" variant="secondary" className="max-md:w-full md:self-start">
           CommonLife Pilot
         </ButtonLink>
       </div>
-      <div className="flex min-w-0 flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-5 py-7 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px]">
+      <div className="flex min-w-0 flex-1 flex-col gap-6 rounded-3xl bg-cl-white px-5 py-7 md:rounded-[28px] md:p-12 desktop:rounded-[32px]">
         {phase === "sent" ? (
           <>
             <DoneBadge />

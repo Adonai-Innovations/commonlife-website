@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 function Block({ block }: { block: PrivacyBlock }) {
   if (block.kind === "h2") {
     return (
-      <h2 className="pt-4 font-lora text-2xl font-semibold leading-8 min-[1180px]:pt-6 min-[1180px]:text-[28px] min-[1180px]:leading-9">
+      <h2 className="pt-4 font-lora text-2xl font-semibold leading-8 desktop:pt-6 desktop:text-[28px] desktop:leading-9">
         {block.text}
       </h2>
     );
   }
   if (block.kind === "h3") {
-    return <h3 className="font-lora text-[18px] font-semibold leading-7 min-[1180px]:text-[21px] min-[1180px]:leading-[30px]">{block.text}</h3>;
+    return <h3 className="font-lora text-[18px] font-semibold leading-7 desktop:text-[21px] desktop:leading-[30px]">{block.text}</h3>;
   }
   if (block.kind === "ul") {
     return (
@@ -54,10 +54,10 @@ export default function PrivacyPage() {
 
   return (
     <SiteShell>
-      <article className="flex justify-center rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 min-[1180px]:rounded-[32px] min-[1180px]:px-[72px] min-[1180px]:py-16">
+      <article className="flex justify-center rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
         <div className="flex w-full max-w-[820px] flex-col gap-5 font-inter text-base leading-[27px]">
           <p className="w-fit rounded-full bg-cl-paper px-3.5 py-1.5 font-inter text-[13px] font-semibold leading-none">{badge.text}</p>
-          <h1 className="font-lora text-[32px] font-normal leading-10 tracking-[-0.32px] min-[1180px]:text-[48px] min-[1180px]:leading-[58px] min-[1180px]:tracking-[-0.48px]">
+          <h1 className="font-lora text-[32px] font-normal leading-10 tracking-[-0.32px] desktop:text-[48px] desktop:leading-[58px] desktop:tracking-[-0.48px]">
             {title.text}
           </h1>
           <p className="font-inter text-[15px] leading-[22px] text-cl-ocean">{effective.text}</p>

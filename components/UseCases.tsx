@@ -63,9 +63,9 @@ export default function UseCases() {
   }
 
   return (
-    <section className="overflow-hidden rounded-3xl bg-cl-white py-8 pl-6 md:rounded-[28px] md:py-12 md:pl-12 min-[1180px]:rounded-[32px] min-[1180px]:py-16 min-[1180px]:pl-[72px]">
-      <div className="mb-6 flex items-center justify-between gap-4 pr-6 md:mb-8 md:pr-12 min-[1180px]:pr-[72px]">
-        <h2 className="font-lora text-[32px] leading-[38px] tracking-[-0.32px] md:text-[42px] md:leading-[50px] min-[1180px]:text-[52px] min-[1180px]:leading-[60px] min-[1180px]:tracking-[-0.52px]">
+    <section className="overflow-hidden rounded-3xl bg-cl-white py-8 pl-6 md:rounded-[28px] md:py-12 md:pl-12 desktop:rounded-[32px] desktop:py-16 desktop:pl-[72px]">
+      <div className="mb-6 flex items-center justify-between gap-4 pr-6 md:mb-8 md:pr-12 desktop:pr-[72px]">
+        <h2 className="font-lora text-[32px] leading-[38px] tracking-[-0.32px] md:text-[42px] md:leading-[50px] desktop:text-[52px] desktop:leading-[60px] desktop:tracking-[-0.52px]">
           Common Use Cases
         </h2>
         <div className="flex shrink-0 gap-3">
@@ -87,9 +87,9 @@ export default function UseCases() {
           </button>
         </div>
       </div>
-      <div ref={scroller} className="carousel flex snap-x snap-mandatory gap-3 overflow-x-auto min-[1180px]:gap-5">
+      <div ref={scroller} className="carousel flex snap-x snap-mandatory gap-3 overflow-x-auto desktop:gap-5">
         {cards.map((card) => (
-          <article key={card.title} data-card className="w-[264px] shrink-0 snap-start overflow-hidden rounded-[20px] bg-cl-paper min-[1180px]:w-[310px]">
+          <article key={card.title} data-card className="w-[264px] shrink-0 snap-start overflow-hidden rounded-[20px] bg-cl-paper desktop:w-[310px]">
             {card.media === "photo" ? (
               <Photo src={card.src} alt={card.alt} className="h-[200px] w-full" />
             ) : (

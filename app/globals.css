@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @config "../tailwind.config.mjs";
 
+/* Named so it sorts after `md`. Arbitrary min-[1180px] was emitted first and lost. */
+@theme {
+  --breakpoint-desktop: 73.75rem;
+}
+
 @layer base {
   body {
     background: #f5f7f9;

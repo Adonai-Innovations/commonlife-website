@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header className="bg-cl-paper">
-      <div className="hidden min-h-[72px] items-center justify-between px-12 py-5 min-[1180px]:flex">
+      <div className="hidden min-h-[72px] items-center justify-between px-12 py-5 desktop:flex">
         <div className="flex items-center gap-12">
           <Link href="/" aria-label="CommonLife">
             <Wordmark className="h-[18px] w-[150px]" />
@@ -65,7 +65,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between py-3 pl-5 pr-3 min-[1180px]:hidden">
+      <div className="flex items-center justify-between py-3 pl-5 pr-3 desktop:hidden">
         <Link href="/" aria-label="CommonLife">
           <Wordmark className="h-[14px] w-[116px]" />
         </Link>
@@ -81,7 +81,7 @@ export default function Header() {
       </div>
 
       {open ? (
-        <div role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-0 z-50 overflow-y-auto bg-cl-paper min-[1180px]:hidden">
+        <div role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-0 z-50 overflow-y-auto bg-cl-paper desktop:hidden">
           <div className="flex items-center justify-between py-3 pl-5 pr-3">
             <Link href="/" aria-label="CommonLife" onClick={() => setOpenPath(null)}>
               <Wordmark className="h-[14px] w-[116px]" />
