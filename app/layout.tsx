@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Cabin, Inter } from "next/font/google";
+import { Cabin, Inter, Lora } from "next/font/google";
+import Motion from "@/components/horizon/Motion";
 import "./globals.css";
 
 const cabin = Cabin({
@@ -12,16 +13,25 @@ const cabin = Cabin({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  weight: "400",
+  style: "italic",
 });
 
 export const metadata: Metadata = {
-  title: "CommonLife — Where Faith and Understanding Meet Clarity",
-  description:
-    "AI-powered, Bible-based insights for churches, schools, and families. Built on biblically verified sources — not generic AI.",
+  title: {
+    default: "Where Faith and Understanding meet Clarity.",
+    template: "%s",
+  },
+  description: "Faith meets technology—built for the Church, powered by truth.",
   openGraph: {
-    title: "CommonLife — Where Faith and Understanding Meet Clarity",
-    description:
-      "AI-powered ministry platform for churches, schools, and families.",
+    title: "Where Faith and Understanding meet Clarity.",
+    description: "Faith meets technology—built for the Church, powered by truth.",
     siteName: "CommonLife",
   },
 };
@@ -33,7 +43,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cabin.variable} ${inter.variable} font-body antialiased`}>
+      <body className={`${cabin.variable} ${inter.variable} ${lora.variable} font-body antialiased`}>
+        <Motion />
         {children}
       </body>
     </html>

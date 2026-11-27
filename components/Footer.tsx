@@ -2,8 +2,6 @@ import Link from "next/link";
 
 const footerLinks = [
   { label: "About CommonLife", href: "/about" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Contact Us", href: "/contact" },
 ];
 

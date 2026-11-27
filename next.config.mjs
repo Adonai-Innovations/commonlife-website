@@ -1,4 +1,5 @@
 import { securityHeaders } from "./lib/security-headers.mjs";
+import { siteRedirects } from "./lib/redirects.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -25,6 +26,9 @@ const nextConfig = {
         headers: securityHeaders(),
       },
     ];
+  },
+  async redirects() {
+    return siteRedirects();
   },
 };
 
