@@ -44,7 +44,7 @@ const features = [
 export default function HomePage() {
   return (
     <SiteShell>
-      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:p-[72px]">
+      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
         <div className="flex flex-col gap-7 desktop:flex-row desktop:items-center desktop:gap-20">
           <div className="flex flex-col gap-8 desktop:w-[600px] desktop:shrink-0">
             <h1 className="font-lora text-[42px] leading-[48px] tracking-[-0.02em] md:text-[60px] md:leading-[68px] desktop:text-[80px] desktop:leading-[88px]">
