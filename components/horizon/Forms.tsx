@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { LinkButton, SubmitButton } from "@/components/horizon/Button";
 import { CheckGroup, SelectField, TextField } from "@/components/horizon/Fields";
@@ -33,12 +33,17 @@ const PILOT_FOCUS = [
 
 const CONTACT_FOCUS = ["firstName", "lastName", "email", "organization", "message", "timeline"] as const;
 
-function focusFirstInvalid(order: readonly string[], invalid: string[]) {
-  const name = order.find((item) => invalid.includes(item));
-  if (!name) return;
-  window.requestAnimationFrame(() => {
+function useInvalidFocus(order: readonly string[], fields: string[]) {
+  const nextName = useRef<string | null>(null);
+  useEffect(() => {
+    const name = nextName.current;
+    if (!name) return;
+    nextName.current = null;
     document.querySelector<HTMLElement>(`[name="${name}"]`)?.focus();
-  });
+  }, [fields]);
+  return (invalid: string[]) => {
+    nextName.current = order.find((item) => invalid.includes(item)) ?? null;
+  };
 }
 
 function Alert({ message }: { message: string }) {
@@ -95,6 +100,7 @@ export function PilotForm() {
   const [alert, setAlert] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [pending, setPending] = useState(false);
+  const focusInvalid = useInvalidFocus(PILOT_FOCUS, fields);
   const bad = (name: string) => fields.includes(name);
   const set = (key: keyof typeof emptyPilot) => (value: string) => setValues((current) => ({ ...current, [key]: value }));
 
@@ -105,7 +111,7 @@ export function PilotForm() {
     if (!parsed.ok) {
       setFields(parsed.fields);
       setAlert(FORM_CHECK);
-      focusFirstInvalid(PILOT_FOCUS, parsed.fields);
+      focusInvalid(parsed.fields);
       return;
     }
     setPending(true);
@@ -120,7 +126,7 @@ export function PilotForm() {
       const invalid = data?.fields ?? [];
       setFields(invalid);
       setAlert(data?.error || FORM_CHECK);
-      focusFirstInvalid(PILOT_FOCUS, invalid);
+      focusInvalid(invalid);
     } catch {
       setAlert(FORM_CHECK);
     } finally {
@@ -207,6 +213,7 @@ export function ContactForm({ initial = "form" }: { initial?: "form" | "delivery
   const [alert, setAlert] = useState<string | null>(initial === "delivery-error" ? DELIVERY_ERROR : null);
   const [done, setDone] = useState(initial === "sent");
   const [pending, setPending] = useState(false);
+  const focusInvalid = useInvalidFocus(CONTACT_FOCUS, fields);
   const bad = (name: string) => fields.includes(name);
   const set = (key: keyof typeof emptyContact) => (value: string) => setValues((current) => ({ ...current, [key]: value }));
 
@@ -218,7 +225,7 @@ export function ContactForm({ initial = "form" }: { initial?: "form" | "delivery
       setFields(parsed.fields);
       setAlert(FORM_CHECK);
       setDone(false);
-      focusFirstInvalid(CONTACT_FOCUS, parsed.fields);
+      focusInvalid(parsed.fields);
       return;
     }
     setPending(true);
@@ -234,7 +241,7 @@ export function ContactForm({ initial = "form" }: { initial?: "form" | "delivery
       setDone(false);
       setFields(invalid);
       setAlert(data?.error || FORM_CHECK);
-      focusFirstInvalid(CONTACT_FOCUS, invalid);
+      focusInvalid(invalid);
     } catch {
       setAlert(FORM_CHECK);
     } finally {

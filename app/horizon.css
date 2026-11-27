@@ -21,6 +21,12 @@
   --scrim-m100: 0.97;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 .horizon {
   background: var(--cl-deep-ocean);
   color: var(--cl-white);
@@ -452,23 +458,6 @@
   transition: background-color 200ms ease;
 }
 
-.site-header--overlay::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(6, 47, 69, 0.55) 0%, rgba(6, 47, 69, 0.2) 100%);
-}
-
-.site-header--overlay > * {
-  position: relative;
-  z-index: 1;
-}
-
 .site-header--overlay[data-solid="true"] {
   background: var(--cl-deep-ocean);
 }
@@ -734,19 +723,6 @@
   max-width: 100%;
 }
 
-/* Dark #062F45 only behind the copy. The fade sits above the type so the photo band stays clear. */
-.full-copy::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  left: -100vw;
-  right: -100vw;
-  top: -88px;
-  bottom: -56px;
-  background: linear-gradient(180deg, rgba(6, 47, 69, 0) 0, rgba(6, 47, 69, 0.45) 36px, rgba(6, 47, 69, 0.9) 88px, rgba(6, 47, 69, 0.96) 100%);
-}
-
 .solid {
   background: var(--cl-deep-ocean);
   padding: 88px 24px;
@@ -802,6 +778,13 @@
 
 .platform-copy {
   gap: 32px;
+}
+
+.solution-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
 }
 
 .story-body {
@@ -1235,9 +1218,6 @@ select.control.is-set {
   .full-copy {
     gap: 24px;
   }
-  .full-copy::before {
-    bottom: -88px;
-  }
   .solid {
     padding: 128px 40px;
   }
@@ -1299,9 +1279,6 @@ select.control.is-set {
         rgba(6, 47, 69, 0.8) 62%,
         rgba(6, 47, 69, 0.96) 100%
       );
-  }
-  .full-copy::before {
-    bottom: -104px;
   }
   .solid {
     padding: 160px 56px;
