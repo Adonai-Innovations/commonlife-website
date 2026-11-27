@@ -42,7 +42,7 @@ function Progress({ index, fraction }: { index: string; fraction: string }) {
 
 function Hairline() {
   return (
-    <div className="px-5 desktop:px-12">
+    <div className="px-5 md:px-6 desktop:px-12">
       <div className="h-0.5">
         <div data-hairline className="h-0.5 origin-left bg-cl-white" />
       </div>
@@ -71,7 +71,7 @@ function Chapter({
   return (
     <section data-chapter className={`flex min-h-[100svh] flex-col bg-cl-deep-ocean pt-16 text-cl-white desktop:pt-20 ${className}`}>
       <Hairline />
-      <div className="flex flex-1 flex-col justify-center px-5 py-8 desktop:flex-row desktop:items-center desktop:gap-12 desktop:px-12 desktop:py-10">
+      <div className="flex flex-1 flex-col justify-center px-5 py-8 md:px-6 desktop:flex-row desktop:items-center desktop:gap-12 desktop:px-12 desktop:py-10">
         {children}
       </div>
     </section>

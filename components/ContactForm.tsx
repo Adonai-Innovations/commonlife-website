@@ -61,9 +61,9 @@ export default function ContactForm({ preview }: { preview?: "invalid" | "error"
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-10 px-5 py-14 md:px-6 md:py-16 desktop:flex-row desktop:items-start desktop:gap-16 desktop:px-12 desktop:py-20">
-      <div className="flex flex-col items-start gap-6 desktop:w-[340px] desktop:shrink-0 desktop:pt-4">
-        <h1 className="f-h1-form">Connect With Us!</h1>
+    <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-10 px-5 py-14 md:px-6 md:py-16 desktop:flex-row desktop:items-start desktop:gap-16 desktop:px-12 desktop:py-20">
+      <div className="flex flex-col items-start gap-6 desktop:shrink-0 desktop:pt-4">
+        <h1 className="f-h1-form desktop:whitespace-nowrap">Connect With Us!</h1>
         <ButtonLink href="/commonlife-pilot" variant="secondary-light">
           CommonLife Pilot
         </ButtonLink>

@@ -67,7 +67,9 @@ export default function StoryMotion() {
               scrub: 1,
               anticipatePin: 1,
               start: "top top",
-              end: "+=135vh",
+              // ScrollTrigger does not parse CSS vh here; "+=135vh" held for 135px.
+              // The spec is 1.2–1.5 × 100vh. invalidateOnRefresh re-reads the viewport.
+              end: () => "+=" + window.innerHeight * 1.35,
               invalidateOnRefresh: true,
             },
           });

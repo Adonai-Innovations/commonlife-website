@@ -109,7 +109,7 @@ export default function Header({ tone = "light", fixed = false }: { tone?: "ligh
               ✕
             </button>
           </div>
-          <nav aria-label="Mobile" className="flex flex-col items-center gap-7 px-5 pt-16">
+          <nav aria-label="Mobile" className="mx-auto flex w-max max-w-full flex-col items-start gap-7 px-5 pt-16">
             {links.map((link) => (
               <Link
                 key={link.href}
