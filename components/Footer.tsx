@@ -1,53 +1,34 @@
 import Link from "next/link";
 
-const footerLinks = [
-  { label: "About CommonLife", href: "/about" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Contact Us", href: "/contact" },
-];
+import Wordmark from "@/components/Wordmark";
+import { FOOTER_LEGAL, SCHEDULE_DEMO_URL } from "@/lib/links";
 
-export default function Footer() {
+const links = [
+  { href: "/about", label: "About Us" },
+  { href: "/commonlife-pilot", label: "CommonLife Pilot" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+export default function Footer({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const dark = tone === "dark";
+  const linkClass = `py-2 font-inter text-[15px] font-medium leading-5 ${dark ? "text-cl-white" : "text-cl-deep-ocean"}`;
+
   return (
-    <footer className="bg-brand-navy text-brand-lightBerry" role="contentinfo">
-      <div className="max-w-[1440px] mx-auto px-5 md:px-20 py-12 md:py-14">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-          <div>
-            <p className="font-heading font-bold text-white text-xl">CommonLife</p>
-            <p className="text-sm mt-1 max-w-xs">
-              Where Faith and Understanding Meet Clarity
-            </p>
-          </div>
-
-          <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="https://commonlife.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-                >
-                  CommonLife App ↗
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <div className="mt-10 pt-6 border-t border-white/10 text-xs text-brand-lightBerry/70">
-          © 2025 CommonLife, Inc. — All rights reserved. CommonLife® is a registered trademark.
-        </div>
+    <footer className={dark ? "border-t border-cl-ocean bg-cl-deep-ocean text-cl-white" : "border-t border-cl-deep-ocean bg-cl-paper text-cl-deep-ocean"}>
+      <div className="mx-auto flex flex-col gap-7 px-5 py-12 desktop:px-12">
+        <Wordmark className="h-[19px] w-[160px]" />
+        <nav aria-label="Footer" className="flex max-w-full flex-wrap gap-x-6">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className={linkClass}>
+              {link.label}
+            </Link>
+          ))}
+          <a href={SCHEDULE_DEMO_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            CommonLife App
+          </a>
+          <span className={linkClass}>Privacy Policy</span>
+        </nav>
+        <p className={`font-inter text-[13px] leading-5 ${dark ? "text-cl-sky" : "text-cl-ocean"}`}>{FOOTER_LEGAL}</p>
       </div>
     </footer>
   );
