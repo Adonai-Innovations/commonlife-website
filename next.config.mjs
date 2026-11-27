@@ -1,4 +1,5 @@
 import { securityHeaders } from "./lib/security-headers.mjs";
+import { permanentRedirects } from "./lib/redirects.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -14,9 +15,11 @@ const nextConfig = {
   },
   experimental: {
     serverActions: {
-      // No server actions are defined. Cap the body if one is added later.
       bodySizeLimit: "100kb",
     },
+  },
+  async redirects() {
+    return permanentRedirects;
   },
   async headers() {
     return [

@@ -7,31 +7,31 @@ export default function GlobalError({ reset }: { error: Error & { digest?: strin
         style={{
           margin: 0,
           minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#F4F6FB",
-          color: "#101832",
-          fontFamily: "Arial, sans-serif",
-          padding: "24px",
-          textAlign: "center",
+          background: "#F5F7F9",
+          color: "#062F45",
+          fontFamily: "Georgia, serif",
+          padding: "48px 20px",
         }}
       >
-        <main>
-          <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Something went wrong</h1>
-          <p style={{ marginBottom: "1.5rem" }}>
-            Please refresh the page. If this keeps happening, email hello@commonlife.ai.
+        <main style={{ maxWidth: 820, margin: "0 auto" }}>
+          <h1 style={{ fontSize: 40, lineHeight: "48px", fontWeight: 500, letterSpacing: "-0.01em" }}>Something went wrong</h1>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: 17, lineHeight: "28px", marginTop: 24 }}>
+            Please try again. If this keeps happening, email hello@commonlife.ai.
           </p>
           <button
             type="button"
             onClick={() => reset()}
             style={{
-              background: "#4A6CD4",
-              color: "#fff",
+              marginTop: 24,
+              background: "#1370AF",
+              color: "#FFFFFF",
               border: 0,
-              borderRadius: "4px",
-              padding: "12px 24px",
-              fontWeight: 600,
+              borderRadius: 999,
+              height: 48,
+              padding: "0 24px",
+              fontFamily: "Inter, sans-serif",
+              fontSize: 15,
+              fontWeight: 500,
             }}
           >
             Try again
