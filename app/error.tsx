@@ -1,21 +1,29 @@
 "use client";
 
-export default function AppError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
+import { ButtonButton } from "@/components/Button";
+import SiteShell from "@/components/SiteShell";
+
+export default function AppError({
+  error: _error,
+  reset,
+}: {
+  error: unknown;
+  reset: () => void;
+}) {
+  void _error;
   return (
-    <main className="min-h-screen bg-brand-offWhite text-brand-navy flex items-center justify-center px-6">
-      <div className="max-w-md text-center">
-        <h1 className="font-heading font-bold text-3xl mb-4">Something went wrong</h1>
-        <p className="mb-8 text-brand-navy/70">
-          Please try again. If this keeps happening, email hello@commonlife.ai.
-        </p>
-        <button
-          type="button"
-          onClick={() => reset()}
-          className="inline-flex items-center px-6 py-3 rounded bg-brand-berry text-white font-heading font-semibold"
-        >
-          Try again
-        </button>
-      </div>
-    </main>
+    <SiteShell>
+      <section className="rounded-3xl bg-cl-white px-6 pb-16 pt-16 md:rounded-[28px] md:px-12 md:pb-24 md:pt-24 desktop:rounded-[32px] desktop:px-[72px] desktop:pb-[140px] desktop:pt-[120px]">
+        <div className="flex max-w-[820px] flex-col gap-7">
+          <h1 className="font-lora text-[40px] leading-[48px] tracking-[-0.8px] md:text-[48px] md:leading-[56px] desktop:text-[56px] desktop:leading-[64px] desktop:tracking-[-1.12px]">
+            Something went wrong
+          </h1>
+          <p className="font-inter text-[17px] leading-7">Please try again. If this keeps happening, email hello@commonlife.ai.</p>
+          <ButtonButton variant="primary" onClick={() => reset()} className="max-md:w-full md:self-start">
+            Try again
+          </ButtonButton>
+        </div>
+      </section>
+    </SiteShell>
   );
 }

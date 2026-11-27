@@ -8,17 +8,20 @@ const config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          navy: "#101832",
-          berry: "#4A6CD4",
-          lightBerry: "#82AADF",
-          navyDark: "#080D1E",
-          offWhite: "#F4F6FB",
+        cl: {
+          "deep-ocean": "#062F45",
+          "ocean-card": "#093A56",
+          ocean: "#0B4A6B",
+          blue: "#1370AF",
+          sky: "#8EB5DB",
+          white: "#FFFFFF",
+          paper: "#F5F7F9",
+          amber: "#9E5A10",
         },
       },
       fontFamily: {
-        heading: ["var(--font-cabin)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        lora: ["var(--font-lora)", "serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
       },
     },
   },

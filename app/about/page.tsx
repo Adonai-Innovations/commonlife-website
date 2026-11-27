@@ -1,222 +1,69 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Link from "next/link";
+import type { Metadata } from "next";
 
-const discipleshipStats = [
-  { value: "500+", label: "Churches Served" },
-  { value: "50K+", label: "Believers Reached" },
-  { value: "6", label: "Ministry Tools" },
-  { value: "100%", label: "Bible-First" },
-];
+import { Photo } from "@/components/media";
+import PilotBand from "@/components/PilotBand";
+import SiteShell from "@/components/SiteShell";
 
-const values = [
-  {
-    icon: "✝️",
-    title: "Scripture Authority",
-    body: "Every answer is grounded in the Bible and verified by Christian scholars.",
-  },
-  {
-    icon: "🙏",
-    title: "Faithful Stewardship",
-    body: "We build technology that honors God and serves His people well.",
-  },
-  {
-    icon: "🌍",
-    title: "Radical Accessibility",
-    body: "Ministry tools shouldn't require a tech budget. CommonLife is affordable for every church.",
-  },
-  {
-    icon: "🤲",
-    title: "Community Discipleship",
-    body: "We believe discipleship happens in community, not in isolation — our tools reflect that.",
-  },
-  {
-    icon: "🔒",
-    title: "Trust & Safety",
-    body: "No hallucinations. No generic AI. Only sources your congregation can trust.",
-  },
-  {
-    icon: "💡",
-    title: "Continuous Innovation",
-    body: "We listen to pastors, educators, and families to keep building what the Church actually needs.",
-  },
-];
-
-const team = [
-  {
-    name: "Keven Valdez",
-    role: "Chief Executive Officer",
-    description: "Visionary leader with a passion for faith-driven technology.",
-  },
-  {
-    name: "CTO Agent",
-    role: "Chief Technology Officer",
-    description: "Architecting scalable, trustworthy AI systems for ministry.",
-  },
-];
-
-export const metadata = {
-  title: "About CommonLife — Mission & Values",
-  description:
-    "CommonLife exists to bring biblically faithful AI to every church, school, and family. Learn our mission, values, and story.",
+export const metadata: Metadata = {
+  title: "Our Story",
+  description: "CommonLife, founded in 2024, makes biblically accurate wisdom accessible worldwide",
 };
 
 export default function AboutPage() {
   return (
-    <>
-      <Navbar />
-
-      <main>
-        {/* Hero */}
-        <section
-          className="bg-brand-navy text-white px-5 md:px-20 pt-24 pb-20 text-center"
-          aria-labelledby="about-hero-heading"
-        >
-          <div className="max-w-3xl mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase mb-4">
-              Our Mission
-            </p>
-            <h1
-              id="about-hero-heading"
-              className="font-heading font-bold text-4xl md:text-6xl leading-tight md:leading-none mb-8"
-            >
-              Faith-First AI for the Church
+    <SiteShell>
+      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
+        <div className="flex flex-col gap-7 desktop:flex-row desktop:items-center desktop:gap-20">
+          <div className="flex flex-col gap-7 desktop:w-[560px] desktop:shrink-0">
+            <h1 className="font-lora text-[42px] leading-[48px] tracking-[-0.02em] md:text-[60px] md:leading-[68px] md:tracking-[-1.2px] desktop:text-[80px] desktop:leading-[88px] desktop:tracking-[-1.6px]">
+              Our Story
             </h1>
-            <p className="text-brand-lightBerry text-lg md:text-xl">
-              CommonLife exists to bring biblically faithful, accessible AI to every church, school,
-              and family — so the next generation encounters truth, not confusion.
+            <p className="font-inter text-[17px] leading-7 md:text-[19px] md:leading-[30px] desktop:text-[20px] desktop:leading-8">
+              CommonLife, founded in 2024, makes biblically accurate wisdom accessible worldwide
             </p>
           </div>
-        </section>
+          <Photo
+            src="/d/group-bibles.jpg"
+            alt="Bibles open in a group study"
+            className="h-[240px] rounded-2xl md:h-[400px] md:rounded-[20px] desktop:h-[520px] desktop:min-w-0 desktop:flex-1 desktop:rounded-3xl"
+          />
+        </div>
+      </section>
 
-        {/* Scripture quote */}
-        <section
-          className="bg-brand-berry text-white px-5 md:px-20 py-16 text-center"
-          aria-label="Scripture quote"
-        >
-          <blockquote className="max-w-2xl mx-auto">
-            <p className="font-heading font-bold text-2xl md:text-3xl italic mb-4">
-              &ldquo;Your word is a lamp to my feet and a light to my path.&rdquo;
+      <section className="rounded-3xl bg-cl-white px-6 py-8 md:rounded-[28px] md:p-12 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
+        <div className="flex flex-col gap-7 desktop:flex-row desktop:items-center desktop:gap-20">
+          <Photo
+            src="/d/open-bible.jpg"
+            alt="Open Bible"
+            className="h-[220px] rounded-2xl md:h-[340px] md:rounded-[20px] desktop:h-[560px] desktop:w-[460px] desktop:shrink-0 desktop:rounded-3xl"
+          />
+          <div className="flex flex-col gap-5 font-inter text-[18px] leading-[30px] desktop:gap-6 desktop:text-[19px] desktop:leading-8">
+            <p>
+              We saw a growing problem — people searching for answers online and being met with confusing, misleading, or worldly interpretations of God’s Word. Our team, made up of believers, technologists, educators, and ministry leaders, knew there had to be a better way.
             </p>
-            <cite className="text-white/70 text-sm not-italic">— Psalm 119:105</cite>
-          </blockquote>
-        </section>
-
-        {/* Discipleship stats */}
-        <section
-          className="bg-brand-navyDark text-white px-5 md:px-20 py-10"
-          aria-label="Impact statistics"
-        >
-          <ul className="max-w-[1440px] mx-auto flex flex-wrap justify-around gap-8">
-            {discipleshipStats.map((s) => (
-              <li key={s.label} className="text-center">
-                <p className="font-heading font-bold text-4xl text-white">{s.value}</p>
-                <p className="text-brand-lightBerry text-sm mt-1">{s.label}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Values grid */}
-        <section
-          className="bg-white px-5 md:px-20 py-20 md:py-28"
-          aria-labelledby="values-heading"
-        >
-          <div className="max-w-[1440px] mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
-              What We Stand For
+            <p>
+              So, we built CommonLife — a Christian AI platform that draws exclusively from verified, Scripture-based sources to help believers grow in knowledge, faith, and wisdom without the noise of the internet.
             </p>
-            <h2
-              id="values-heading"
-              className="font-heading font-bold text-3xl md:text-5xl text-brand-navy text-center max-w-2xl mx-auto mb-16 text-balance"
-            >
-              Built on Principles That Matter
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {values.map((v) => (
-                <article key={v.title} className="bg-brand-offWhite rounded-xl p-7">
-                  <span className="text-3xl" role="img" aria-hidden="true">
-                    {v.icon}
-                  </span>
-                  <h3 className="font-heading font-bold text-lg text-brand-navy mt-4 mb-2">
-                    {v.title}
-                  </h3>
-                  <p className="text-brand-navy/70 text-sm leading-relaxed">{v.body}</p>
-                </article>
-              ))}
-            </div>
+            <p>
+              From pastors preparing sermons, to teachers crafting lessons, to parents guiding their children, CommonLife was created to equip the modern Church with digital tools rooted in biblical truth.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Team */}
-        <section
-          className="bg-brand-offWhite px-5 md:px-20 py-20 md:py-28"
-          aria-labelledby="team-heading"
-        >
-          <div className="max-w-[1440px] mx-auto">
-            <p className="text-brand-berry text-xs font-heading font-semibold tracking-widest uppercase text-center mb-4">
-              The Team
-            </p>
-            <h2
-              id="team-heading"
-              className="font-heading font-bold text-3xl md:text-5xl text-brand-navy text-center max-w-xl mx-auto mb-16 text-balance"
-            >
-              People Who Believe in This Mission
-            </h2>
+      <section className="flex flex-col gap-7 rounded-3xl bg-cl-deep-ocean p-6 text-cl-white md:gap-7 md:rounded-[28px] md:p-12 desktop:gap-8 desktop:rounded-[32px] desktop:px-[72px] desktop:py-16">
+        <h2 className="font-lora text-[32px] leading-[38px] tracking-[-0.32px] md:text-[42px] md:leading-[50px] md:tracking-[-0.42px] desktop:text-[52px] desktop:leading-[60px] desktop:tracking-[-0.52px]">
+          Our Mission
+        </h2>
+        <p className="max-w-[1000px] font-lora text-[26px] italic leading-9 md:text-[30px] md:leading-[42px] desktop:text-[36px] desktop:leading-[50px]">
+          To make biblically correct wisdom accessible to every believer through technology that uplifts truth, clarity, and understanding — helping people live a CommonLife rooted in Christ.
+        </p>
+        <p className="max-w-[760px] font-inter text-base leading-[26px] text-cl-sky desktop:text-[17px] desktop:leading-7">
+          Every response our platform gives, every lesson it helps create, and every question it answers is built on that foundation. We believe that technology should serve the Gospel, not the other way around.
+        </p>
+      </section>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              {team.map((member) => (
-                <article
-                  key={member.name}
-                  className="bg-white rounded-xl p-8 text-center"
-                >
-                  <div
-                    className="w-16 h-16 rounded-full bg-brand-berry/20 flex items-center justify-center mx-auto mb-4"
-                    aria-hidden="true"
-                  >
-                    <span className="font-heading font-bold text-brand-berry text-xl">
-                      {member.name.charAt(0)}
-                    </span>
-                  </div>
-                  <h3 className="font-heading font-bold text-lg text-brand-navy mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-brand-berry text-sm font-semibold mb-3">{member.role}</p>
-                  <p className="text-brand-navy/70 text-sm">{member.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section
-          className="bg-brand-navy text-white px-5 md:px-20 py-24 text-center"
-          aria-labelledby="about-cta-heading"
-        >
-          <div className="max-w-xl mx-auto">
-            <h2
-              id="about-cta-heading"
-              className="font-heading font-bold text-3xl md:text-4xl mb-6"
-            >
-              Join the Movement
-            </h2>
-            <p className="text-brand-lightBerry text-lg mb-10">
-              Help us bring faithful AI to every congregation. Schedule a demo and see CommonLife in
-              action.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex justify-center items-center px-8 py-4 rounded bg-brand-berry text-white font-heading font-semibold hover:bg-brand-berry/90 transition-colors focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
-            >
-              Schedule a Demo
-            </Link>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </>
+      <PilotBand href="/commonlife-pilot" />
+    </SiteShell>
   );
 }
